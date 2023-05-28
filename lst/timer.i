@@ -1,628 +1,7 @@
-#line 1 "src\\main.c"
-
-
-
-
-
- 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-
- 
-
- 
-#line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
- 
- 
- 
-
-
-
-
-
- 
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
- 
-
-
-
-
-  
- 
-
-
-
-
-
-
-
-
-#line 47 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
-
-
-  
-
-
-
-    typedef unsigned int size_t;    
-
-
-
-
-
-
-
-
-
- 
- 
-
- 
-
-
-
-    typedef struct __va_list __va_list;
-
-
-
-
-
-
-   
-
-
-
-
- 
-
-
-
-
-typedef struct __fpos_t_struct {
-    unsigned __int64 __pos;
-    
-
-
-
- 
-    struct {
-        unsigned int __state1, __state2;
-    } __mbstate;
-} fpos_t;
-   
-
-
- 
-
-
-   
-
- 
-
-typedef struct __FILE FILE;
-   
-
-
-
-
-
-
- 
-
-#line 136 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
-
-
-extern FILE __stdin, __stdout, __stderr;
-extern FILE *__aeabi_stdin, *__aeabi_stdout, *__aeabi_stderr;
-
-#line 166 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
-    
-
-    
-
-    
-
-
-
-
-
-     
-
-
-
-   
-
-
- 
-
-
-   
-
-
- 
-
-   
-
-
-
- 
-
-   
-
-
- 
-
-
-
-
-   
-
-
- 
-
-
-
-
-
-    
-
-
- 
-
-
-
-
-
-
-extern __declspec(__nothrow) int remove(const char *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
- 
-extern __declspec(__nothrow) int rename(const char *  , const char *  ) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) FILE *tmpfile(void);
-   
-
-
-
-
- 
-extern __declspec(__nothrow) char *tmpnam(char *  );
-   
-
-
-
-
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) int fclose(FILE *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int fflush(FILE *  );
-   
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) FILE *fopen(const char * __restrict  ,
-                           const char * __restrict  ) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) FILE *freopen(const char * __restrict  ,
-                    const char * __restrict  ,
-                    FILE * __restrict  ) __attribute__((__nonnull__(2,3)));
-   
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) void setbuf(FILE * __restrict  ,
-                    char * __restrict  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
- 
-extern __declspec(__nothrow) int setvbuf(FILE * __restrict  ,
-                   char * __restrict  ,
-                   int  , size_t  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-#pragma __printf_args
-extern __declspec(__nothrow) int fprintf(FILE * __restrict  ,
-                    const char * __restrict  , ...) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-#pragma __printf_args
-extern __declspec(__nothrow) int _fprintf(FILE * __restrict  ,
-                     const char * __restrict  , ...) __attribute__((__nonnull__(1,2)));
-   
-
-
-
- 
-#pragma __printf_args
-extern __declspec(__nothrow) int printf(const char * __restrict  , ...) __attribute__((__nonnull__(1)));
-   
-
-
-
-
- 
-#pragma __printf_args
-extern __declspec(__nothrow) int _printf(const char * __restrict  , ...) __attribute__((__nonnull__(1)));
-   
-
-
-
- 
-#pragma __printf_args
-extern __declspec(__nothrow) int sprintf(char * __restrict  , const char * __restrict  , ...) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
-
-
- 
-#pragma __printf_args
-extern __declspec(__nothrow) int _sprintf(char * __restrict  , const char * __restrict  , ...) __attribute__((__nonnull__(1,2)));
-   
-
-
-
- 
-
-#pragma __printf_args
-extern __declspec(__nothrow) int __ARM_snprintf(char * __restrict  , size_t  ,
-                     const char * __restrict  , ...) __attribute__((__nonnull__(3)));
-
-
-#pragma __printf_args
-extern __declspec(__nothrow) int snprintf(char * __restrict  , size_t  ,
-                     const char * __restrict  , ...) __attribute__((__nonnull__(3)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-#pragma __printf_args
-extern __declspec(__nothrow) int _snprintf(char * __restrict  , size_t  ,
-                      const char * __restrict  , ...) __attribute__((__nonnull__(3)));
-   
-
-
-
- 
-#pragma __scanf_args
-extern __declspec(__nothrow) int fscanf(FILE * __restrict  ,
-                    const char * __restrict  , ...) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-#pragma __scanf_args
-extern __declspec(__nothrow) int _fscanf(FILE * __restrict  ,
-                     const char * __restrict  , ...) __attribute__((__nonnull__(1,2)));
-   
-
-
-
- 
-#pragma __scanf_args
-extern __declspec(__nothrow) int scanf(const char * __restrict  , ...) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
- 
-#pragma __scanf_args
-extern __declspec(__nothrow) int _scanf(const char * __restrict  , ...) __attribute__((__nonnull__(1)));
-   
-
-
-
- 
-#pragma __scanf_args
-extern __declspec(__nothrow) int sscanf(const char * __restrict  ,
-                    const char * __restrict  , ...) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
-
-
-
-
- 
-#pragma __scanf_args
-extern __declspec(__nothrow) int _sscanf(const char * __restrict  ,
-                     const char * __restrict  , ...) __attribute__((__nonnull__(1,2)));
-   
-
-
-
- 
-
- 
-extern __declspec(__nothrow) int vfscanf(FILE * __restrict  , const char * __restrict  , __va_list) __attribute__((__nonnull__(1,2)));
-extern __declspec(__nothrow) int vscanf(const char * __restrict  , __va_list) __attribute__((__nonnull__(1)));
-extern __declspec(__nothrow) int vsscanf(const char * __restrict  , const char * __restrict  , __va_list) __attribute__((__nonnull__(1,2)));
-
-extern __declspec(__nothrow) int _vfscanf(FILE * __restrict  , const char * __restrict  , __va_list) __attribute__((__nonnull__(1,2)));
-extern __declspec(__nothrow) int _vscanf(const char * __restrict  , __va_list) __attribute__((__nonnull__(1)));
-extern __declspec(__nothrow) int _vsscanf(const char * __restrict  , const char * __restrict  , __va_list) __attribute__((__nonnull__(1,2)));
-extern __declspec(__nothrow) int __ARM_vsscanf(const char * __restrict  , const char * __restrict  , __va_list) __attribute__((__nonnull__(1,2)));
-
-extern __declspec(__nothrow) int vprintf(const char * __restrict  , __va_list  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
- 
-extern __declspec(__nothrow) int _vprintf(const char * __restrict  , __va_list  ) __attribute__((__nonnull__(1)));
-   
-
-
-
- 
-extern __declspec(__nothrow) int vfprintf(FILE * __restrict  ,
-                    const char * __restrict  , __va_list  ) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int vsprintf(char * __restrict  ,
-                     const char * __restrict  , __va_list  ) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int __ARM_vsnprintf(char * __restrict  , size_t  ,
-                     const char * __restrict  , __va_list  ) __attribute__((__nonnull__(3)));
-
-extern __declspec(__nothrow) int vsnprintf(char * __restrict  , size_t  ,
-                     const char * __restrict  , __va_list  ) __attribute__((__nonnull__(3)));
-   
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) int _vsprintf(char * __restrict  ,
-                      const char * __restrict  , __va_list  ) __attribute__((__nonnull__(1,2)));
-   
-
-
-
- 
-extern __declspec(__nothrow) int _vfprintf(FILE * __restrict  ,
-                     const char * __restrict  , __va_list  ) __attribute__((__nonnull__(1,2)));
-   
-
-
-
- 
-extern __declspec(__nothrow) int _vsnprintf(char * __restrict  , size_t  ,
-                      const char * __restrict  , __va_list  ) __attribute__((__nonnull__(3)));
-   
-
-
-
+#line 1 "Library\\StdDriver\\src\\timer.c"
  
 
-#pragma __printf_args
-extern __declspec(__nothrow) int asprintf(char **  , const char * __restrict  , ...) __attribute__((__nonnull__(2)));
-extern __declspec(__nothrow) int vasprintf(char **  , const char * __restrict  , __va_list  ) __attribute__((__nonnull__(2)));
 
-#pragma __printf_args
-extern __declspec(__nothrow) int __ARM_asprintf(char **  , const char * __restrict  , ...) __attribute__((__nonnull__(2)));
-extern __declspec(__nothrow) int __ARM_vasprintf(char **  , const char * __restrict  , __va_list  ) __attribute__((__nonnull__(2)));
-   
 
 
 
@@ -630,322 +9,7 @@ extern __declspec(__nothrow) int __ARM_vasprintf(char **  , const char * __restr
 
 
 
-
- 
-
-extern __declspec(__nothrow) int fgetc(FILE *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) char *fgets(char * __restrict  , int  ,
-                    FILE * __restrict  ) __attribute__((__nonnull__(1,3)));
-   
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int fputc(int  , FILE *  ) __attribute__((__nonnull__(2)));
-   
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int fputs(const char * __restrict  , FILE * __restrict  ) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
- 
-extern __declspec(__nothrow) int getc(FILE *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
- 
-
-
-
-
-    extern __declspec(__nothrow) int (getchar)(void);
-
-   
-
-
-
-
-
- 
-extern __declspec(__nothrow) char *gets(char *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int putc(int  , FILE *  ) __attribute__((__nonnull__(2)));
-   
-
-
-
-
-
- 
-
-
-
-
-    extern __declspec(__nothrow) int (putchar)(int  );
-
-   
-
-
-
- 
-extern __declspec(__nothrow) int puts(const char *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
- 
-extern __declspec(__nothrow) int ungetc(int  , FILE *  ) __attribute__((__nonnull__(2)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) size_t fread(void * __restrict  ,
-                    size_t  , size_t  , FILE * __restrict  ) __attribute__((__nonnull__(1,4)));
-   
-
-
-
-
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) size_t __fread_bytes_avail(void * __restrict  ,
-                    size_t  , FILE * __restrict  ) __attribute__((__nonnull__(1,3)));
-   
-
-
-
-
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) size_t fwrite(const void * __restrict  ,
-                    size_t  , size_t  , FILE * __restrict  ) __attribute__((__nonnull__(1,4)));
-   
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) int fgetpos(FILE * __restrict  , fpos_t * __restrict  ) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int fseek(FILE *  , long int  , int  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int fsetpos(FILE * __restrict  , const fpos_t * __restrict  ) __attribute__((__nonnull__(1,2)));
-   
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) long int ftell(FILE *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) void rewind(FILE *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) void clearerr(FILE *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
- 
-
-extern __declspec(__nothrow) int feof(FILE *  ) __attribute__((__nonnull__(1)));
-   
-
-
- 
-extern __declspec(__nothrow) int ferror(FILE *  ) __attribute__((__nonnull__(1)));
-   
-
-
- 
-extern __declspec(__nothrow) void perror(const char *  );
-   
-
-
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) int _fisatty(FILE *   ) __attribute__((__nonnull__(1)));
-    
- 
-
-extern __declspec(__nothrow) void __use_no_semihosting_swi(void);
-extern __declspec(__nothrow) void __use_no_semihosting(void);
-    
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-#line 1021 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdio.h"
-
-
-
- 
-
-#line 35 "src\\main.c"
-
- 
-#line 1 ".\\Library\\Device\\Nuvoton\\M031\\Include\\NuMicro.h"
- 
-
-
-
-
-
-
  
-
-
-
 #line 1 ".\\Library\\Device\\Nuvoton\\M031\\Include\\M031Series.h"
  
 
@@ -28544,29 +27608,19 @@ void WWDT_Open(uint32_t u32PreScale, uint32_t u32CmpValue, uint32_t u32EnableInt
 
 
  
-#line 13 ".\\Library\\Device\\Nuvoton\\M031\\Include\\NuMicro.h"
+#line 13 "Library\\StdDriver\\src\\timer.c"
 
 
 
  
-#line 38 "src\\main.c"
-
- 
-#line 41 "src\\main.c"
-
-
 
 
 
  
-  
-
-
-  
 
 
 
-
+ 
 
 
 
@@ -28586,106 +27640,28 @@ void WWDT_Open(uint32_t u32PreScale, uint32_t u32CmpValue, uint32_t u32EnableInt
 
 
  
-  
- 
-void GPIO_Init(void);
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
- 
-void SYS_Init(void)
+uint32_t TIMER_Open(TIMER_T *timer, uint32_t u32Mode, uint32_t u32Freq)
 {
-	
+    uint32_t u32Clk = TIMER_GetModuleClock(timer);
+    uint32_t u32Cmpr = 0, u32Prescale = 0;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-	 
-	SYS_UnlockReg();
-
-	 
-	 
-	CLK_EnableXtalRC((0x1ul << (3))|(0x1ul << (2))|(0x1ul << (0)));
-
-	 
-	CLK_WaitClockReady((0x1ul << (3))|(0x1ul << (4))|(0x1ul << (0)));
-
-	 
-	CLK_SetHCLK((0x00UL<<(0)), (((1)-1) << (0)));
-
-	 
-	((CLK_T *) ((( uint32_t)0x40000000) + 0x00200))->PCLKDIV = ((0x0UL<<(0)) | (0x0UL<<(4)));
-
-	 
-	CLK_EnableModuleClock(((((0) & 0x03UL) << 30)|((((2)) & 0x1fUL) << 0)| (((0x0) & 0x03UL) << 28)|(((0x0) & 0x07UL) << 25)|(((0x0) & 0x1fUL) << 20)| (((0x0) & 0x03UL) << 18)|(((0x0) & 0xffUL) << 10)|(((0x0) & 0x1fUL) << 5)));
-	CLK_EnableModuleClock(((((1) & 0x03UL) << 30)|((((2)) & 0x1fUL) << 0)| (((1) & 0x03UL) << 28)|(((7) & 0x07UL) << 25)|((((8)) & 0x1fUL) << 20)| (((0x0) & 0x03UL) << 18)|(((0x0) & 0xffUL) << 10)|(((0x0) & 0x1fUL) << 5)));
-	CLK_EnableModuleClock(((((1) & 0x03UL) << 30)|((((0)) & 0x1fUL) << 0)| (((1) & 0x03UL) << 28)|(((3) & 0x07UL) << 25)|((((0)) & 0x1fUL) << 20)| (((0x0) & 0x03UL) << 18)|(((0x0) & 0xffUL) << 10)|(((0x0) & 0x1fUL) << 5)));
-
-	 
-	CLK_SetModuleClock(((((1) & 0x03UL) << 30)|((((2)) & 0x1fUL) << 0)| (((1) & 0x03UL) << 28)|(((7) & 0x07UL) << 25)|((((8)) & 0x1fUL) << 20)| (((0x0) & 0x03UL) << 18)|(((0x0) & 0xffUL) << 10)|(((0x0) & 0x1fUL) << 5)), (0x7UL<<(8)), 0x0);
-	CLK_SetModuleClock(((((1) & 0x03UL) << 30)|((((0)) & 0x1fUL) << 0)| (((1) & 0x03UL) << 28)|(((3) & 0x07UL) << 25)|((((0)) & 0x1fUL) << 20)| (((0x0) & 0x03UL) << 18)|(((0x0) & 0xffUL) << 10)|(((0x0) & 0x1fUL) << 5)), (0x3UL<<(0)), 0x0);
-
-	 
-	 
-	SystemCoreClockUpdate();
-	
-	
-
-
-
-
-
-
-
-
-
-  
-
-	 
-	((SYS_T *) ((( uint32_t)0x40000000) + 0x00000))->GPA_MFPH = 0x00000000;
-	((SYS_T *) ((( uint32_t)0x40000000) + 0x00000))->GPA_MFPL = 0x00000000;
-	((SYS_T *) ((( uint32_t)0x40000000) + 0x00000))->GPB_MFPH = (0x00UL<<(28)) | (0x00UL<<(24));
-	((SYS_T *) ((( uint32_t)0x40000000) + 0x00000))->GPB_MFPL = 0x00000000;
-	((SYS_T *) ((( uint32_t)0x40000000) + 0x00000))->GPC_MFPL = 0x00000000;
-	((SYS_T *) ((( uint32_t)0x40000000) + 0x00000))->GPF_MFPH = 0x00000000;
-	((SYS_T *) ((( uint32_t)0x40000000) + 0x00000))->GPF_MFPL = (0x0EUL<<(4)) | (0x0EUL<<(0));
-
-	 
-	SYS_LockReg();
-
-	return;
-}
-
-void Timer_Init(void)
-{
      
-     
-    TIMER_Open(((TIMER_T *) ((( uint32_t)0x40000000) + 0x50000)), (1UL << (27)), 1);
+    if(u32Freq >= (u32Clk >> 1))
+    {
+        u32Cmpr = 2;
+    }
+    else
+    {
+        u32Cmpr = u32Clk / u32Freq;
+        u32Prescale = (u32Cmpr >> 24);   
+        if (u32Prescale > 0)
+            u32Cmpr = u32Cmpr / (u32Prescale + 1);
+    }
+
+    timer->CTL = u32Mode | u32Prescale;
+    timer->CMP = u32Cmpr;
+
+    return(u32Clk / (u32Cmpr * (u32Prescale + 1)));
 }
 
 
@@ -28695,26 +27671,12 @@ void Timer_Init(void)
 
 
 
+
  
-void GPIO_Init(void)
+void TIMER_Close(TIMER_T *timer)
 {
-	
-
- 
-	
-	GPIO_SetMode(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00004000UL), 0x1UL);
-	
-	GPIO_SetMode(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00008000UL), 0x0UL);
-	
-	
-
-
-
- 
-
-
-	
-	((*((volatile uint32_t *)(((((( uint32_t)0x40000000) + 0x4000) + 0x0800)+(0x40*(1))) + ((14)<<2)))) = 1);
+    timer->CTL = 0;
+    timer->EXTCTL = 0;
 }
 
 
@@ -28730,22 +27692,290 @@ void GPIO_Init(void)
 
 
 
-
-
-
  
-void blink(int onTime, int offTime, int repeat) {
+int32_t TIMER_Delay(TIMER_T *timer, uint32_t u32Usec)
+{
+    uint32_t u32Clk = TIMER_GetModuleClock(timer);
+    uint32_t u32Prescale = 0UL, u32Delay;
+    uint32_t u32Cmpr, u32Cntr, u32NsecPerTick, i = 0UL;
+
+     
+    timer->CTL = 0;
+    timer->EXTCTL = 0;
+
+    if(u32Clk <= 1000000)    
+    {
+        if(u32Usec < 1000)
+            u32Usec = 1000;
+        if(u32Usec > 1000000)
+            u32Usec = 1000000;
+    }
+    else
+    {
+        if(u32Usec < 100)
+            u32Usec = 100;
+        if(u32Usec > 1000000)
+            u32Usec = 1000000;
+    }
+
+    if(u32Clk <= 1000000)
+    {
+        u32Prescale = 0;
+        u32NsecPerTick = 1000000000 / u32Clk;
+        u32Cmpr = (u32Usec * 1000) / u32NsecPerTick;
+    }
+    else
+    {
+        u32Cmpr = u32Usec * (u32Clk / 1000000);
+        u32Prescale = (u32Cmpr >> 24);   
+        if (u32Prescale > 0)
+            u32Cmpr = u32Cmpr / (u32Prescale + 1);
+    }
+
+    timer->CMP = u32Cmpr;
+    timer->CTL = (0x1ul << (30)) | (0UL << (27)) | u32Prescale;
+
     
-	int i = 0;
-	
-	while(i < repeat)
-	{
-		((*((volatile uint32_t *)(((((( uint32_t)0x40000000) + 0x4000) + 0x0800)+(0x40*(1))) + ((14)<<2)))) = 0);	
-        CLK_SysTickDelay(onTime * 1000); 
-        ((*((volatile uint32_t *)(((((( uint32_t)0x40000000) + 0x4000) + 0x0800)+(0x40*(1))) + ((14)<<2)))) = 1);	
-        CLK_SysTickDelay(offTime * 1000); 
-		
-		i++;
+
+ 
+    for(u32Delay = (SystemCoreClock / u32Clk) + 1UL; u32Delay > 0UL; u32Delay--)
+    {
+        __nop();
+    }
+
+    
+
+ 
+    u32Delay = (SystemCoreClock / TIMER_GetModuleClock(timer)) * (u32Prescale + 1);
+    u32Cntr = timer->CNT;
+    i = 0;
+    while(timer->CTL & (0x1ul << (25)))
+    {
+         
+        if(u32Cntr == timer->CNT)
+        {
+            if(i++ > u32Delay)
+            {
+                return (-1L);
+            }
+        }
+        else
+        {
+            i = 0;
+            u32Cntr = timer->CNT;
+        }
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+void TIMER_EnableCapture(TIMER_T *timer, uint32_t u32CapMode, uint32_t u32Edge)
+{
+    timer->EXTCTL = (timer->EXTCTL & ~((0x1ul << (4)) | (0x3ul << (1)))) |
+                    u32CapMode | u32Edge | (0x1ul << (3));
+}
+
+
+
+
+
+
+
+
+
+ 
+void TIMER_DisableCapture(TIMER_T *timer)
+{
+    timer->EXTCTL &= ~(0x1ul << (3));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+void TIMER_EnableEventCounter(TIMER_T *timer, uint32_t u32Edge)
+{
+    timer->EXTCTL = (timer->EXTCTL & ~(0x1ul << (0))) | u32Edge;
+    timer->CTL |= (0x1ul << (24));
+}
+
+
+
+
+
+
+
+
+
+ 
+void TIMER_DisableEventCounter(TIMER_T *timer)
+{
+    timer->CTL &= ~(0x1ul << (24));
+}
+
+
+
+
+
+
+
+
+
+
+ 
+uint32_t TIMER_GetModuleClock(TIMER_T *timer)
+{
+    uint32_t u32Src;
+    const uint32_t au32Clk[] = {(32000000UL), (32768UL), 0, 0, 0, (38400UL), 0, (48000000UL)};
+
+    if(timer == ((TIMER_T *) ((( uint32_t)0x40000000) + 0x50000)))
+        u32Src = (((CLK_T *) ((( uint32_t)0x40000000) + 0x00200))->CLKSEL1 & (0x7ul << (8))) >> (8);
+    else if(timer == ((TIMER_T *) ((( uint32_t)0x40000000) + 0x50020)))
+        u32Src = (((CLK_T *) ((( uint32_t)0x40000000) + 0x00200))->CLKSEL1 & (0x7ul << (12))) >> (12);
+    else if(timer == ((TIMER_T *) ((( uint32_t)0x40000000) + 0x51000)))
+        u32Src = (((CLK_T *) ((( uint32_t)0x40000000) + 0x00200))->CLKSEL1 & (0x7ul << (16))) >> (16);
+    else   
+        u32Src = (((CLK_T *) ((( uint32_t)0x40000000) + 0x00200))->CLKSEL1 & (0x7ul << (20))) >> (20);
+
+    if(u32Src == 2)
+    {
+        if ((timer == ((TIMER_T *) ((( uint32_t)0x40000000) + 0x50000))) || (timer == ((TIMER_T *) ((( uint32_t)0x40000000) + 0x50020))))
+            return CLK_GetPCLK0Freq();
+        else
+            return CLK_GetPCLK1Freq();
+    }
+
+    return (au32Clk[u32Src]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+void TIMER_EnableFreqCounter(TIMER_T *timer, uint32_t u32DropCount, uint32_t u32Timeout, uint32_t u32EnableInt)
+{
+    TIMER_T *t;     
+
+    t = (timer == ((TIMER_T *) ((( uint32_t)0x40000000) + 0x50000))) ? ((TIMER_T *) ((( uint32_t)0x40000000) + 0x50020)) : ((TIMER_T *) ((( uint32_t)0x40000000) + 0x51020));
+
+    t->CMP = 0xFFFFFF;
+    t->EXTCTL = u32EnableInt ? (0x1ul << (5)) : 0;
+    timer->CTL = (0x1ul << (10)) | (0x1ul << (30));
+
+    return;
+}
+
+
+
+
+
+
+
+ 
+void TIMER_DisableFreqCounter(TIMER_T *timer)
+{
+    timer->CTL &= ~(0x1ul << (10));
+}
+
+
+
+
+
+
+
+
+
+
+ 
+void TIMER_SetTriggerSource(TIMER_T *timer, uint32_t u32Src)
+{
+    timer->CTL = (timer->CTL & ~(0x1ul << (18))) | u32Src;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+void TIMER_SetTriggerTarget(TIMER_T *timer, uint32_t u32Mask)
+{
+    timer->CTL = (timer->CTL & ~((0x1ul << (19)) | (0x1ul << (21)) | (0x1ul << (8)) | (0x1ul << (9)))) | (u32Mask);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+void TIMER_CaptureSelect(TIMER_T *timer, uint32_t u32Src)
+{
+    if (u32Src == (0xFFUL))
+    {
+        timer->CTL = (timer->CTL & ~((0x1ul << (16)))) |
+                     ((0UL << (16)));
+    }
+    else
+    {
+        timer->CTL = (timer->CTL & ~((0x1ul << (16)))) |
+                     ((1UL << (16)));
+        timer->EXTCTL = (timer->EXTCTL & ~((0x7ul << (8)))) |
+                        (u32Src);
     }
 }
 
@@ -28755,45 +27985,29 @@ void blink(int onTime, int offTime, int repeat) {
 
 
 
+
+
+
+
  
-int main()
+int32_t TIMER_ResetCounter(TIMER_T *timer)
 {
-	unsigned long lastDebounceTime = 0;  
-	unsigned long debounceDelay = 50;    
+    uint32_t u32Delay;
 
-	int buttonState = 0;  
-	int lastButtonState = 0;  
-	
-    SYS_Init();
-	GPIO_Init();
-
-    while(1)
-	{
-		
-		int reading = (*((volatile uint32_t *)(((((( uint32_t)0x40000000) + 0x4000) + 0x0800)+(0x40*(1))) + ((15)<<2))));
-
-		
-		if (reading != lastButtonState)
-		{
-		TIMER_Start(((TIMER_T *) ((( uint32_t)0x40000000) + 0x50000)));	
-			lastDebounceTime = TIMER_GetCounter(((TIMER_T *) ((( uint32_t)0x40000000) + 0x50000)));
-		}
-
-		
-		
-		if ((TIMER_GetCounter(((TIMER_T *) ((( uint32_t)0x40000000) + 0x50000))) - lastDebounceTime) > debounceDelay)
-		{
-			if (reading != buttonState) 
-			{
-				buttonState = reading;
-
-			
-			}
-		}
-
-		
-		lastButtonState = reading;
-	}
+    timer->CTL |= (0x1ul << (26));
+     
+    u32Delay = (SystemCoreClock / TIMER_GetModuleClock(timer)) * 3;
+    while(((timer->CTL & (0x1ul << (26))) == (0x1ul << (26))) && (--u32Delay))
+    {
+        __nop();
+    }
+    return u32Delay > 0 ? 0 : (-1L);
 }
+
+   
+
+   
+
+   
 
  
