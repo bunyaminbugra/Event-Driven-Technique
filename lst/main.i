@@ -28538,7 +28538,23 @@ void WWDT_Open(uint32_t u32PreScale, uint32_t u32CmpValue, uint32_t u32EnableInt
 
 
 
-void blink(int onTime, int offTime, int repeat);
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+void blink(int onTime, int repeat);
+void short_press_state(void);
+void long_press_state(void);
 
 #line 15 ".\\inc\\main.h"
 
@@ -28546,6 +28562,41 @@ void blink(int onTime, int offTime, int repeat);
 #line 1 ".\\inc\\button.h"
 
 
+
+#line 1 ".\\inc\\main.h"
+#line 5 ".\\inc\\button.h"
+#line 1 ".\\inc\\eventDriven.h"
+
+
+
+typedef enum
+{
+	NONE_EVENT,
+	SHORT_PREES,
+	LONG_PRESS
+} Event_Type;
+
+struct Event
+{
+	int type;
+	struct Event *next;
+};
+
+int enqueue(int type);
+int dequeue(struct Event *event);
+
+#line 6 ".\\inc\\button.h"
+
+typedef struct
+{
+	GPIO_T *port;
+	unsigned long pin;
+	volatile uint32_t buttonPin;
+} button_InitTypeDef;
+
+void button_Init(GPIO_T *port, unsigned long pin, int portNumber, int pinNumber);
+void button_DeInit(button_InitTypeDef *button);
+int button_Get_Status(button_InitTypeDef *button);
 
 #line 18 ".\\inc\\main.h"
 
@@ -28572,6 +28623,14 @@ void TMR1_IRQHandler(void);
 #line 24 ".\\inc\\main.h"
 
  
+#line 1 ".\\inc\\softTimer.h"
+
+
+
+ 
+#line 6 ".\\inc\\softTimer.h"
+
+ 
 #line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdbool.h"
  
 
@@ -28589,6 +28648,19 @@ void TMR1_IRQHandler(void);
 #line 25 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdbool.h"
 
 
+
+#line 9 ".\\inc\\softTimer.h"
+
+
+
+
+
+
+void SoftTimer_Init(void);
+void SoftTimer_ISR(void); 
+void SoftTimer_SetTimer(uint8_t TimerNo, uint32_t SetTimeMs);
+_Bool SoftTimer_GetTimerStatus(uint8_t TimerNo);
+void SoftTimer_ResetTimer(uint8_t TimerNo);
 
 #line 27 ".\\inc\\main.h"
 
@@ -29335,37 +29407,12 @@ extern __declspec(__nothrow) int __C_library_version_number(void);
 
 
 
+
+
  
   
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-typedef enum
-{
-	NONE,
-	SHORT_PREES,
-	LONG_PRESS
-} Event_Type;
-
-struct Event
-{
-	int type;
-	struct Event *next;
-};
-
-struct Event *front = 0;
-struct Event *rear = 0;
 
 #line 9 "src\\main.c"
 
@@ -29377,12 +29424,32 @@ struct Event *rear = 0;
 
  
 int main()
-{	
+{
+	struct Event event;
+	button_InitTypeDef button1;
+	
     SYS_Init();
 	GPIO_Init();
-
+	Timer_Init();
+	SoftTimer_Init();
+	
     while(1)
 	{
+		button_Get_Status(&button1);
 		
+		dequeue(&event);
+
+		switch (event.type) 
+		{
+			case SHORT_PREES:
+				short_press_state();
+				break;
+			case LONG_PRESS:
+				long_press_state();
+				break;
+			default:
+				short_press_state(); 
+				break;
+		}
 	}
 }

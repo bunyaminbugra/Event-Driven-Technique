@@ -1,4 +1,3 @@
-#include "utils.h"
 #include "main.h"
 
 /**
@@ -101,49 +100,7 @@ void GPIO_Init(void)
 	LED_GREEN_OFF;
 }
 
-int enqueue(int type)
-{
-    /* Queue is empty */
-    if (front == NULL)
-    {
-        struct Event *new = (struct Event *)malloc(sizeof(struct Event));
-        new->type = type;
-        new->next = NULL;
 
-        front = rear = new;
-    }
-    else
-    {
-        struct Event *new = (struct Event *)malloc(sizeof(struct Event));
-        new->type = type;
-        new->next = NULL;
-
-        rear->next = new;
-        rear = new;
-    }
-    
-	return 0;
-}
-
-/* Dequeue */
-int dequeue()
-{
-	struct Event *temp;
-	
-    if (front == NULL)
-    {
-        printf("Queue is empty!");
-        return -1;
-    }
-
-    temp = front;
-
-    front = front->next;
-
-    free(temp);
-
-    return 0;
-}
 
 /**
   * @brief   TMR1 Interrupt Handler
@@ -157,7 +114,7 @@ void TMR1_IRQHandler(void)
 	/* Check if TIMER1 interrupt occurred */
 	if (TIMER_GetIntFlag(TIMER1))
     {
-		
+		SoftTimer_ISR();
 		/* Clear the TIMER1 interrupt flag */
 		TIMER_ClearIntFlag(TIMER1);
 	}

@@ -32107,7 +32107,23 @@ L 1 ".\inc\led.h" 1
 N#ifndef LED_H
 N#define LED_H
 N
-Nvoid blink(int onTime, int offTime, int repeat);
+N#define	HIGH		1
+N#define	LOW		0
+N  
+N#define LED_GREEN	PB14
+N#define LED_GREEN_PORT	PB
+N#define LED_GREEN_PIN	BIT14
+N
+N#define LED_GREEN_ON	(LED_GREEN = HIGH)
+N#define LED_GREEN_OFF	(LED_GREEN = LOW)
+N
+N#define BUTTON	PB15
+N#define	BUTTON_PORT	PB
+N#define	BUTTON_PIN	BIT15
+N
+Nvoid blink(int onTime, int repeat);
+Nvoid short_press_state(void);
+Nvoid long_press_state(void);
 N
 N#endif
 L 15 ".\inc\main.h" 2
@@ -32117,6 +32133,85 @@ N#include "button.h"
 L 1 ".\inc\button.h" 1
 N#ifndef BUTTON_H
 N#define BUTTON_H
+N
+N#include "main.h"
+L 1 ".\inc\main.h" 1
+N#ifndef MAIN_H
+S#define MAIN_H
+S
+S/* Include the standard C library for input-output operations */
+S#include <stdio.h>
+S
+S/* Include the header file for the NuMicro MCU series */
+S#include "NuMicro.h"
+S
+S/* Include the header file specific to the M031 series of the NuMicro MCU */
+S#include "M031Series.h"
+S
+S/**/
+S#include "led.h"
+S
+S/**/
+S#include "button.h"
+S
+S/**/
+S#include "utils.h"
+S
+S/**/
+S#include "eventDriven.h"
+S
+S/**/
+S#include "softTimer.h"
+S
+S/**/
+S#include <stdlib.h>
+S
+S
+S
+S/**
+S  * @section   Macro Definitions
+S  * @brief     This section includes macro definitions.
+S  */
+S  
+S
+S
+S
+N#endif
+L 5 ".\inc\button.h" 2
+N#include "eventDriven.h"
+L 1 ".\inc\eventDriven.h" 1
+N#ifndef EVENT_DRIVEN_H
+N#define EVENT_DRIVEN_H
+N
+Ntypedef enum
+N{
+N	NONE_EVENT,
+N	SHORT_PREES,
+N	LONG_PRESS
+N} Event_Type;
+N
+Nstruct Event
+N{
+N	int type;
+N	struct Event *next;
+N};
+N
+Nint enqueue(int type);
+Nint dequeue(struct Event *event);
+N
+N#endif
+L 6 ".\inc\button.h" 2
+N
+Ntypedef struct
+N{
+N	GPIO_T *port;
+N	unsigned long pin;
+N	volatile uint32_t buttonPin;
+N} button_InitTypeDef;
+N
+Nvoid button_Init(GPIO_T *port, unsigned long pin, int portNumber, int pinNumber);
+Nvoid button_DeInit(button_InitTypeDef *button);
+Nint button_Get_Status(button_InitTypeDef *button);
 N
 N#endif
 L 18 ".\inc\main.h" 2
@@ -32141,6 +32236,15 @@ Nvoid TMR1_IRQHandler(void);
 N
 N#endif
 L 21 ".\inc\main.h" 2
+N
+N/**/
+N#include "eventDriven.h"
+N
+N/**/
+N#include "softTimer.h"
+L 1 ".\inc\softTimer.h" 1
+N#ifndef SOFT_TIMER_H
+N#define SOFT_TIMER_H
 N
 N/**/
 N#include <stdint.h>
@@ -32175,6 +32279,21 @@ N  #endif
 N
 N#endif /* __bool_true_false_are_defined */
 N
+L 9 ".\inc\softTimer.h" 2
+N
+N#define TIMER_COUNT		2
+N
+N#define TIMER_DEBOUNCE		0
+N#define TIMER_LONG_PRESS		1
+N
+Nvoid SoftTimer_Init(void);
+Nvoid SoftTimer_ISR(void); 
+Nvoid SoftTimer_SetTimer(uint8_t TimerNo, uint32_t SetTimeMs);
+Nbool SoftTimer_GetTimerStatus(uint8_t TimerNo);
+X_Bool SoftTimer_GetTimerStatus(uint8_t TimerNo);
+Nvoid SoftTimer_ResetTimer(uint8_t TimerNo);
+N
+N#endif
 L 27 ".\inc\main.h" 2
 N
 N/**/
@@ -33152,42 +33271,15 @@ N
 N/* end of stdlib.h */
 L 30 ".\inc\main.h" 2
 N
+N
+N
 N/**
 N  * @section   Macro Definitions
 N  * @brief     This section includes macro definitions.
 N  */
 N  
-N#define	HIGH	1
-N#define	LOW	0
-N  
-N#define LED_GREEN	PB14
-N#define LED_GREEN_PORT	PB
-N#define LED_GREEN_PIN	BIT14
 N
-N#define LED_GREEN_ON	(LED_GREEN = HIGH)
-N#define LED_GREEN_OFF	(LED_GREEN = LOW)
 N
-N#define BUTTON	PB15
-N#define	BUTTON_PORT	PB
-N#define	BUTTON_PIN	BIT15
-N
-Ntypedef enum
-N{
-N	NONE,
-N	SHORT_PREES,
-N	LONG_PRESS
-N} Event_Type;
-N
-Nstruct Event
-N{
-N	int type;
-N	struct Event *next;
-N};
-N
-Nstruct Event *front = NULL;
-Xstruct Event *front = 0;
-Nstruct Event *rear = NULL;
-Xstruct Event *rear = 0;
 N
 N#endif
 L 9 "src\main.c" 2
@@ -33200,12 +33292,32 @@ N  * @return  Integer value indicating the exit status
 N  * @note    The main function should return an exit status indicating the program's termination status.
 N  */
 Nint main()
-N{	
+N{
+N	struct Event event;
+N	button_InitTypeDef button1;
+N	
 N    SYS_Init();
 N	GPIO_Init();
-N
+N	Timer_Init();
+N	SoftTimer_Init();
+N	
 N    while(1)
 N	{
+N		button_Get_Status(&button1);
 N		
+N		dequeue(&event);
+N
+N		switch (event.type) 
+N		{
+N			case SHORT_PREES:
+N				short_press_state();
+N				break;
+N			case LONG_PRESS:
+N				long_press_state();
+N				break;
+N			default:
+N				short_press_state(); // ????
+N				break;
+N		}
 N	}
 N}

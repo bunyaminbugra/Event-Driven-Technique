@@ -448,6 +448,11 @@
               <FileType>1</FileType>
               <FilePath>.\src\utils.c</FilePath>
             </File>
+            <File>
+              <FileName>eventDriven.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\eventDriven.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -477,6 +482,11 @@
               <FileName>utils.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\inc\utils.h</FilePath>
+            </File>
+            <File>
+              <FileName>eventDriven.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\eventDriven.h</FilePath>
             </File>
           </Files>
         </Group>

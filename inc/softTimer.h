@@ -1,10 +1,14 @@
 #ifndef SOFT_TIMER_H
 #define SOFT_TIMER_H
 
-#include "main.h"
+/**/
+#include <stdint.h>
 
-#define TIMER_COUNT		2		// istenilen soft counter sayisi
-//
+/**/
+#include <stdbool.h>
+
+#define TIMER_COUNT		2
+
 #define TIMER_DEBOUNCE		0
 #define TIMER_LONG_PRESS		1
 
