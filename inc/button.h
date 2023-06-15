@@ -8,11 +8,11 @@ typedef struct
 {
 	GPIO_T *port;
 	unsigned long pin;
-	volatile uint32_t buttonPin;
 } button_InitTypeDef;
 
-void button_Init(GPIO_T *port, unsigned long pin, int portNumber, int pinNumber);
+button_InitTypeDef* button_Init(GPIO_T *port, unsigned long pin);
 void button_DeInit(button_InitTypeDef *button);
-int button_Get_Status(button_InitTypeDef *button);
+int button_Get_Status(button_InitTypeDef *button, led_InitTypeDef *led);
+int button_Read(button_InitTypeDef *button);
 
 #endif

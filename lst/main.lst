@@ -32107,33 +32107,6 @@ L 1 ".\inc\led.h" 1
 N#ifndef LED_H
 N#define LED_H
 N
-N#define	HIGH		1
-N#define	LOW		0
-N  
-N#define LED_GREEN	PB14
-N#define LED_GREEN_PORT	PB
-N#define LED_GREEN_PIN	BIT14
-N
-N#define LED_GREEN_ON	(LED_GREEN = HIGH)
-N#define LED_GREEN_OFF	(LED_GREEN = LOW)
-N
-N#define BUTTON	PB15
-N#define	BUTTON_PORT	PB
-N#define	BUTTON_PIN	BIT15
-N
-Nvoid blink(int onTime, int repeat);
-Nvoid short_press_state(void);
-Nvoid long_press_state(void);
-N
-N#endif
-L 15 ".\inc\main.h" 2
-N
-N/**/
-N#include "button.h"
-L 1 ".\inc\button.h" 1
-N#ifndef BUTTON_H
-N#define BUTTON_H
-N
 N#include "main.h"
 L 1 ".\inc\main.h" 1
 N#ifndef MAIN_H
@@ -32177,7 +32150,77 @@ S
 S
 S
 N#endif
-L 5 ".\inc\button.h" 2
+L 5 ".\inc\led.h" 2
+N
+N/**/
+N#include <stdbool.h>
+L 1 "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h" 1
+N/* stdbool.h: ISO/IEC 9899:1999 (C99), section 7.16 */
+N
+N/* Copyright (C) ARM Ltd., 2002
+N * All rights reserved
+N * RCS $Revision$
+N * Checkin $Date$
+N * Revising $Author: drodgman $
+N */
+N
+N#ifndef __bool_true_false_are_defined
+N#define __bool_true_false_are_defined 1
+N#define __ARMCLIB_VERSION 5060044
+N
+N  #ifndef __cplusplus /* In C++, 'bool', 'true' and 'false' and keywords */
+N    #define bool _Bool
+N    #define true 1
+N    #define false 0
+N  #else
+S    #ifdef __GNUC__
+S      /* GNU C++ supports direct inclusion of stdbool.h to provide C99
+S         compatibility by defining _Bool */
+S      #define _Bool bool
+S    #endif
+N  #endif
+N
+N#endif /* __bool_true_false_are_defined */
+N
+L 8 ".\inc\led.h" 2
+N
+Ntypedef struct
+N{
+N	GPIO_T *port;
+N	unsigned long pin;
+N} led_InitTypeDef;
+N
+Ntypedef struct
+N{
+N	_Bool IsRunning;
+N	volatile _Bool IsFinish;
+N	unsigned int repeat;
+N	unsigned long onTime;
+N	unsigned long offTime;
+N	unsigned long Time;
+N} blink_Type;
+N
+Nled_InitTypeDef* led_Init(GPIO_T *port, unsigned long pin);
+Nvoid led_DeInit(led_InitTypeDef *led);
+Nvoid blink(led_InitTypeDef *led, int onTime, int repeat);
+Nvoid short_press_state(led_InitTypeDef *led);
+Nvoid long_press_state(led_InitTypeDef *led);
+Nvoid led_SET(led_InitTypeDef *led);
+Nvoid led_RESET(led_InitTypeDef *led);
+Nvoid led_TOGGLE(led_InitTypeDef *led);
+Nint getPortNumber(GPIO_T* port);
+Nint getPinNumber(unsigned long u32PinMask);
+N
+N#endif
+L 15 ".\inc\main.h" 2
+N
+N/**/
+N#include "button.h"
+L 1 ".\inc\button.h" 1
+N#ifndef BUTTON_H
+N#define BUTTON_H
+N
+N#include "main.h"
 N#include "eventDriven.h"
 L 1 ".\inc\eventDriven.h" 1
 N#ifndef EVENT_DRIVEN_H
@@ -32206,12 +32249,12 @@ Ntypedef struct
 N{
 N	GPIO_T *port;
 N	unsigned long pin;
-N	volatile uint32_t buttonPin;
 N} button_InitTypeDef;
 N
-Nvoid button_Init(GPIO_T *port, unsigned long pin, int portNumber, int pinNumber);
+Nbutton_InitTypeDef* button_Init(GPIO_T *port, unsigned long pin);
 Nvoid button_DeInit(button_InitTypeDef *button);
-Nint button_Get_Status(button_InitTypeDef *button);
+Nint button_Get_Status(button_InitTypeDef *button, led_InitTypeDef *led);
+Nint button_Read(button_InitTypeDef *button);
 N
 N#endif
 L 18 ".\inc\main.h" 2
@@ -32251,35 +32294,6 @@ N#include <stdint.h>
 N
 N/**/
 N#include <stdbool.h>
-L 1 "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h" 1
-N/* stdbool.h: ISO/IEC 9899:1999 (C99), section 7.16 */
-N
-N/* Copyright (C) ARM Ltd., 2002
-N * All rights reserved
-N * RCS $Revision$
-N * Checkin $Date$
-N * Revising $Author: drodgman $
-N */
-N
-N#ifndef __bool_true_false_are_defined
-N#define __bool_true_false_are_defined 1
-N#define __ARMCLIB_VERSION 5060044
-N
-N  #ifndef __cplusplus /* In C++, 'bool', 'true' and 'false' and keywords */
-N    #define bool _Bool
-N    #define true 1
-N    #define false 0
-N  #else
-S    #ifdef __GNUC__
-S      /* GNU C++ supports direct inclusion of stdbool.h to provide C99
-S         compatibility by defining _Bool */
-S      #define _Bool bool
-S    #endif
-N  #endif
-N
-N#endif /* __bool_true_false_are_defined */
-N
-L 9 ".\inc\softTimer.h" 2
 N
 N#define TIMER_COUNT		2
 N
@@ -33294,29 +33308,34 @@ N  */
 Nint main()
 N{
 N	struct Event event;
-N	button_InitTypeDef button1;
+N	button_InitTypeDef *button1;
+N	led_InitTypeDef *led1;
 N	
 N    SYS_Init();
-N	GPIO_Init();
 N	Timer_Init();
 N	SoftTimer_Init();
+N
+N	button1 = button_Init(PB, BIT15);
+X	button1 = button_Init(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00008000UL));
+N	led1 = led_Init(PB, BIT14);
+X	led1 = led_Init(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00004000UL));
 N	
 N    while(1)
 N	{
-N		button_Get_Status(&button1);
+N		button_Get_Status(button1, led1);
 N		
 N		dequeue(&event);
 N
 N		switch (event.type) 
 N		{
 N			case SHORT_PREES:
-N				short_press_state();
+N				short_press_state(led1);
 N				break;
 N			case LONG_PRESS:
-N				long_press_state();
+N				long_press_state(led1);
 N				break;
 N			default:
-N				short_press_state(); // ????
+N				short_press_state(led1); // ????
 N				break;
 N		}
 N	}

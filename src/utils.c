@@ -28,11 +28,11 @@ void SYS_Init(void)
 
 	/* Enable IP clock */
 	CLK_EnableModuleClock(ISP_MODULE);
-	CLK_EnableModuleClock(TMR0_MODULE);
+	CLK_EnableModuleClock(TMR1_MODULE);
 	CLK_EnableModuleClock(WDT_MODULE);
 
 	/* Set IP clock */
-	CLK_SetModuleClock(TMR0_MODULE, CLK_CLKSEL1_TMR0SEL_HIRC, MODULE_NoMsk);
+	CLK_SetModuleClock(TMR1_MODULE, CLK_CLKSEL1_TMR1SEL_HIRC, MODULE_NoMsk);
 	CLK_SetModuleClock(WDT_MODULE, CLK_CLKSEL1_WDTSEL_LIRC, MODULE_NoMsk);
 
 	/* Update System Core Clock */
@@ -60,7 +60,7 @@ void SYS_Init(void)
   * @param   None
   * @return  None
   * @note    The function must be invoked to initialize the timer before using it.
-  * @author  Bünyamin Buðra Korkmazer
+  * @author  Bünyamin Bugra Korkmazer
   */
 void Timer_Init(void)
 {
@@ -69,7 +69,7 @@ void Timer_Init(void)
      */
 	
 	/* Open Timer1 in periodic mode with a prescale value of 3 */
-	TIMER_Open(TIMER1, TIMER_PERIODIC_MODE, 1);
+	TIMER_Open(TIMER1, TIMER_PERIODIC_MODE, 1000);
 
 	 /* Enable Timer1 interrupt and enable NVIC IRQ */
 	TIMER_EnableInt(TIMER1);
@@ -78,29 +78,6 @@ void Timer_Init(void)
 	/* Start Timer1 counting */
 	TIMER_Start(TIMER1);
 }
-
-/**
-  * @brief   Initialize GPIO pins
-  * @details This function is used to initialize the GPIO pins.
-  * @param   None
-  * @return  None
-  * @note    The function must be invoked to initialize the GPIO pins before using them.
-  * @author  Bünyamin Bugra Korkmazer
-  */
-void GPIO_Init(void)
-{
-	/*
-	 * Init GPIO pins
-	 */
-	
-	GPIO_SetMode(LED_GREEN_PORT, LED_GREEN_PIN, GPIO_MODE_OUTPUT);
-	
-	GPIO_SetMode(BUTTON_PORT, BUTTON_PIN, GPIO_MODE_INPUT);
-		
-	LED_GREEN_OFF;
-}
-
-
 
 /**
   * @brief   TMR1 Interrupt Handler
