@@ -28603,14 +28603,22 @@ int getPinNumber(unsigned long u32PinMask);
 
 typedef enum
 {
-	NONE_EVENT,
-	SHORT_PREES,
+	SHORT_PRESS,
 	LONG_PRESS
 } Event_Type;
+
+typedef enum
+{
+	LED_ON,
+	LED_OFF
+} LED_state;
 
 struct Event
 {
 	int type;
+	Event_Type mode;
+	LED_state led_state;
+	unsigned long Time;
 	struct Event *next;
 };
 
@@ -28627,7 +28635,7 @@ typedef struct
 
 button_InitTypeDef* button_Init(GPIO_T *port, unsigned long pin);
 void button_DeInit(button_InitTypeDef *button);
-int button_Get_Status(button_InitTypeDef *button, led_InitTypeDef *led);
+int button_Get_Status(button_InitTypeDef *button);
 int button_Read(button_InitTypeDef *button);
 
 #line 18 ".\\inc\\main.h"
@@ -28664,6 +28672,7 @@ void TMR1_IRQHandler(void);
 
  
 #line 9 ".\\inc\\softTimer.h"
+
 
 
 
@@ -29443,6 +29452,8 @@ int main()
 	button_InitTypeDef *button1;
 	led_InitTypeDef *led1;
 	
+	LED_state lastLedState;
+	
     SYS_Init();
 	Timer_Init();
 	SoftTimer_Init();
@@ -29450,23 +29461,99 @@ int main()
 	button1 = button_Init(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00008000UL));
 	led1 = led_Init(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00004000UL));
 	
+	event.Time = 1000;
+	event.mode = SHORT_PRESS;
+	
     while(1)
 	{
-		button_Get_Status(button1, led1);
-		
-		dequeue(&event);
-
-		switch (event.type) 
+		switch (event.mode) 
 		{
-			case SHORT_PREES:
-				short_press_state(led1);
+			case SHORT_PRESS:
+			{
+				switch(event.led_state)
+				{
+					case LED_ON:
+					{
+						if(lastLedState != event.led_state)
+						{
+							SoftTimer_SetTimer(2, event.Time);
+						}
+						if(SoftTimer_GetTimerStatus(2))
+						{
+							event.led_state = LED_OFF;
+						}
+						
+						led_SET(led1);
+						
+						button_Get_Status(button1);
+						
+						lastLedState = event.led_state;
+						break;
+					}
+					
+					case LED_OFF:
+					{
+						if(lastLedState != event.led_state)
+						{
+							SoftTimer_SetTimer(2, event.Time);
+						}
+						if(SoftTimer_GetTimerStatus(2))
+						{
+							event.led_state = LED_OFF;
+						}
+						
+						led_RESET(led1);
+						
+						button_Get_Status(button1);
+						
+						break;
+					}
+				}
 				break;
+			}
+				
 			case LONG_PRESS:
-				long_press_state(led1);
+			{
+				switch(event.led_state)
+				{
+					case LED_ON:
+					{
+						if(lastLedState != event.led_state)
+						{
+							SoftTimer_SetTimer(2, event.Time);
+						}
+						if(SoftTimer_GetTimerStatus(2))
+						{
+							event.led_state = LED_OFF;
+						}
+						
+						led_SET(led1);
+						
+						button_Get_Status(button1);
+						
+						break;
+					}
+					
+					case LED_OFF:
+					{
+						if(lastLedState != event.led_state)
+						{
+							SoftTimer_SetTimer(2, event.Time);
+						}
+						if(SoftTimer_GetTimerStatus(2))
+						{
+							event.led_state = LED_OFF;
+						}
+						
+						led_RESET(led1);
+						
+						button_Get_Status(button1);
+						
+						break;
+					}
+				}			
 				break;
-			default:
-				short_press_state(led1); 
-				break;
+			}
 		}
 	}
 }

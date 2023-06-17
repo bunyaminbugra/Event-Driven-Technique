@@ -3,14 +3,22 @@
 
 typedef enum
 {
-	NONE_EVENT,
-	SHORT_PREES,
+	SHORT_PRESS,
 	LONG_PRESS
 } Event_Type;
+
+typedef enum
+{
+	LED_ON,
+	LED_OFF
+} LED_state;
 
 struct Event
 {
 	int type;
+	Event_Type mode;
+	LED_state led_state;
+	unsigned long Time;
 	struct Event *next;
 };
 

@@ -20,6 +20,8 @@ int main()
 	button_InitTypeDef *button1;
 	led_InitTypeDef *led1;
 	
+	LED_state lastLedState;
+	
     SYS_Init();
 	Timer_Init();
 	SoftTimer_Init();
@@ -27,23 +29,99 @@ int main()
 	button1 = button_Init(PB, BIT15);
 	led1 = led_Init(PB, BIT14);
 	
+	event.Time = 1000;
+	event.mode = SHORT_PRESS;
+	
     while(1)
 	{
-		button_Get_Status(button1, led1);
-		
-		dequeue(&event);
-
-		switch (event.type) 
+		switch (event.mode) 
 		{
-			case SHORT_PREES:
-				short_press_state(led1);
+			case SHORT_PRESS:
+			{
+				switch(event.led_state)
+				{
+					case LED_ON:
+					{
+						if(lastLedState != event.led_state)
+						{
+							SoftTimer_SetTimer(TIMER_LED, event.Time);
+						}
+						if(SoftTimer_GetTimerStatus(TIMER_LED))
+						{
+							event.led_state = LED_OFF;
+						}
+						
+						led_SET(led1);
+						
+						button_Get_Status(button1);
+						
+						lastLedState = event.led_state;
+						break;
+					}
+					
+					case LED_OFF:
+					{
+						if(lastLedState != event.led_state)
+						{
+							SoftTimer_SetTimer(TIMER_LED, event.Time);
+						}
+						if(SoftTimer_GetTimerStatus(TIMER_LED))
+						{
+							event.led_state = LED_OFF;
+						}
+						
+						led_RESET(led1);
+						
+						button_Get_Status(button1);
+						
+						break;
+					}
+				}
 				break;
+			}
+				
 			case LONG_PRESS:
-				long_press_state(led1);
+			{
+				switch(event.led_state)
+				{
+					case LED_ON:
+					{
+						if(lastLedState != event.led_state)
+						{
+							SoftTimer_SetTimer(TIMER_LED, event.Time);
+						}
+						if(SoftTimer_GetTimerStatus(TIMER_LED))
+						{
+							event.led_state = LED_OFF;
+						}
+						
+						led_SET(led1);
+						
+						button_Get_Status(button1);
+						
+						break;
+					}
+					
+					case LED_OFF:
+					{
+						if(lastLedState != event.led_state)
+						{
+							SoftTimer_SetTimer(TIMER_LED, event.Time);
+						}
+						if(SoftTimer_GetTimerStatus(TIMER_LED))
+						{
+							event.led_state = LED_OFF;
+						}
+						
+						led_RESET(led1);
+						
+						button_Get_Status(button1);
+						
+						break;
+					}
+				}			
 				break;
-			default:
-				short_press_state(led1); // ????
-				break;
+			}
 		}
 	}
 }

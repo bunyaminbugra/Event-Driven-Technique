@@ -11,6 +11,7 @@
 
 #define TIMER_DEBOUNCE		0
 #define TIMER_LONG_PRESS		1
+#define TIMER_LED		2
 
 void SoftTimer_Init(void);
 void SoftTimer_ISR(void); 

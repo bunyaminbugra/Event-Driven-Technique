@@ -32228,14 +32228,22 @@ N#define EVENT_DRIVEN_H
 N
 Ntypedef enum
 N{
-N	NONE_EVENT,
-N	SHORT_PREES,
+N	SHORT_PRESS,
 N	LONG_PRESS
 N} Event_Type;
+N
+Ntypedef enum
+N{
+N	LED_ON,
+N	LED_OFF
+N} LED_state;
 N
 Nstruct Event
 N{
 N	int type;
+N	Event_Type mode;
+N	LED_state led_state;
+N	unsigned long Time;
 N	struct Event *next;
 N};
 N
@@ -32253,7 +32261,7 @@ N} button_InitTypeDef;
 N
 Nbutton_InitTypeDef* button_Init(GPIO_T *port, unsigned long pin);
 Nvoid button_DeInit(button_InitTypeDef *button);
-Nint button_Get_Status(button_InitTypeDef *button, led_InitTypeDef *led);
+Nint button_Get_Status(button_InitTypeDef *button);
 Nint button_Read(button_InitTypeDef *button);
 N
 N#endif
@@ -32299,6 +32307,7 @@ N#define TIMER_COUNT		2
 N
 N#define TIMER_DEBOUNCE		0
 N#define TIMER_LONG_PRESS		1
+N#define TIMER_LED		2
 N
 Nvoid SoftTimer_Init(void);
 Nvoid SoftTimer_ISR(void); 
@@ -33311,6 +33320,8 @@ N	struct Event event;
 N	button_InitTypeDef *button1;
 N	led_InitTypeDef *led1;
 N	
+N	LED_state lastLedState;
+N	
 N    SYS_Init();
 N	Timer_Init();
 N	SoftTimer_Init();
@@ -33320,23 +33331,107 @@ X	button1 = button_Init(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040
 N	led1 = led_Init(PB, BIT14);
 X	led1 = led_Init(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00004000UL));
 N	
+N	event.Time = 1000;
+N	event.mode = SHORT_PRESS;
+N	
 N    while(1)
 N	{
-N		button_Get_Status(button1, led1);
-N		
-N		dequeue(&event);
-N
-N		switch (event.type) 
+N		switch (event.mode) 
 N		{
-N			case SHORT_PREES:
-N				short_press_state(led1);
+N			case SHORT_PRESS:
+N			{
+N				switch(event.led_state)
+N				{
+N					case LED_ON:
+N					{
+N						if(lastLedState != event.led_state)
+N						{
+N							SoftTimer_SetTimer(TIMER_LED, event.Time);
+X							SoftTimer_SetTimer(2, event.Time);
+N						}
+N						if(SoftTimer_GetTimerStatus(TIMER_LED))
+X						if(SoftTimer_GetTimerStatus(2))
+N						{
+N							event.led_state = LED_OFF;
+N						}
+N						
+N						led_SET(led1);
+N						
+N						button_Get_Status(button1);
+N						
+N						lastLedState = event.led_state;
+N						break;
+N					}
+N					
+N					case LED_OFF:
+N					{
+N						if(lastLedState != event.led_state)
+N						{
+N							SoftTimer_SetTimer(TIMER_LED, event.Time);
+X							SoftTimer_SetTimer(2, event.Time);
+N						}
+N						if(SoftTimer_GetTimerStatus(TIMER_LED))
+X						if(SoftTimer_GetTimerStatus(2))
+N						{
+N							event.led_state = LED_OFF;
+N						}
+N						
+N						led_RESET(led1);
+N						
+N						button_Get_Status(button1);
+N						
+N						break;
+N					}
+N				}
 N				break;
+N			}
+N				
 N			case LONG_PRESS:
-N				long_press_state(led1);
+N			{
+N				switch(event.led_state)
+N				{
+N					case LED_ON:
+N					{
+N						if(lastLedState != event.led_state)
+N						{
+N							SoftTimer_SetTimer(TIMER_LED, event.Time);
+X							SoftTimer_SetTimer(2, event.Time);
+N						}
+N						if(SoftTimer_GetTimerStatus(TIMER_LED))
+X						if(SoftTimer_GetTimerStatus(2))
+N						{
+N							event.led_state = LED_OFF;
+N						}
+N						
+N						led_SET(led1);
+N						
+N						button_Get_Status(button1);
+N						
+N						break;
+N					}
+N					
+N					case LED_OFF:
+N					{
+N						if(lastLedState != event.led_state)
+N						{
+N							SoftTimer_SetTimer(TIMER_LED, event.Time);
+X							SoftTimer_SetTimer(2, event.Time);
+N						}
+N						if(SoftTimer_GetTimerStatus(TIMER_LED))
+X						if(SoftTimer_GetTimerStatus(2))
+N						{
+N							event.led_state = LED_OFF;
+N						}
+N						
+N						led_RESET(led1);
+N						
+N						button_Get_Status(button1);
+N						
+N						break;
+N					}
+N				}			
 N				break;
-N			default:
-N				short_press_state(led1); // ????
-N				break;
+N			}
 N		}
 N	}
 N}
