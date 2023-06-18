@@ -1,6 +1,7 @@
 .\obj\main.o: src\main.c
 .\obj\main.o: .\inc\main.h
 .\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\obj\main.o: .\Library\Device\Nuvoton\M031\Include\NuMicro.h
 .\obj\main.o: .\Library\Device\Nuvoton\M031\Include\M031Series.h
 .\obj\main.o: .\Library\CMSIS\Include\core_cm0.h
@@ -60,9 +61,8 @@
 .\obj\main.o: .\Library\StdDriver\inc\wwdt.h
 .\obj\main.o: .\inc\led.h
 .\obj\main.o: .\inc\main.h
-.\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\obj\main.o: .\inc\button.h
 .\obj\main.o: .\inc\eventDriven.h
 .\obj\main.o: .\inc\utils.h
 .\obj\main.o: .\inc\softTimer.h
-.\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

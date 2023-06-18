@@ -7,7 +7,7 @@
 /**/
 #include <stdbool.h>
 
-#define TIMER_COUNT		2
+#define TIMER_COUNT		3
 
 #define TIMER_DEBOUNCE		0
 #define TIMER_LONG_PRESS		1

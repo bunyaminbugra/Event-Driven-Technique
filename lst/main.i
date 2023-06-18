@@ -4,9 +4,28 @@
 
 
 
+
+
+
+
+
  
 
 #line 1 ".\\inc\\main.h"
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
 
 
 
@@ -910,7 +929,747 @@ extern __declspec(__nothrow) void __use_no_semihosting(void);
 
  
 
-#line 6 ".\\inc\\main.h"
+#line 20 ".\\inc\\main.h"
+
+ 
+#line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+ 
+ 
+ 
+
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+ 
+
+
+
+
+
+
+
+
+#line 54 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+
+
+  
+
+
+
+    typedef unsigned int size_t;    
+#line 70 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+
+
+
+
+
+
+    
+
+
+
+    typedef unsigned short wchar_t;  
+#line 91 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+
+typedef struct div_t { int quot, rem; } div_t;
+    
+typedef struct ldiv_t { long int quot, rem; } ldiv_t;
+    
+
+typedef struct lldiv_t { long long quot, rem; } lldiv_t;
+    
+
+
+#line 112 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+   
+
+
+
+ 
+
+   
+
+
+
+
+ 
+#line 131 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+   
+
+
+ 
+extern __declspec(__nothrow) int __aeabi_MB_CUR_MAX(void);
+
+   
+
+
+
+
+ 
+
+   
+
+
+
+
+ 
+
+
+
+
+extern __declspec(__nothrow) double atof(const char *  ) __attribute__((__nonnull__(1)));
+   
+
+
+
+ 
+extern __declspec(__nothrow) int atoi(const char *  ) __attribute__((__nonnull__(1)));
+   
+
+
+
+ 
+extern __declspec(__nothrow) long int atol(const char *  ) __attribute__((__nonnull__(1)));
+   
+
+
+
+ 
+
+extern __declspec(__nothrow) long long atoll(const char *  ) __attribute__((__nonnull__(1)));
+   
+
+
+
+ 
+
+
+extern __declspec(__nothrow) double strtod(const char * __restrict  , char ** __restrict  ) __attribute__((__nonnull__(1)));
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+extern __declspec(__nothrow) float strtof(const char * __restrict  , char ** __restrict  ) __attribute__((__nonnull__(1)));
+extern __declspec(__nothrow) long double strtold(const char * __restrict  , char ** __restrict  ) __attribute__((__nonnull__(1)));
+   
+
+ 
+
+extern __declspec(__nothrow) long int strtol(const char * __restrict  ,
+                        char ** __restrict  , int  ) __attribute__((__nonnull__(1)));
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+extern __declspec(__nothrow) unsigned long int strtoul(const char * __restrict  ,
+                                       char ** __restrict  , int  ) __attribute__((__nonnull__(1)));
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+extern __declspec(__nothrow) long long strtoll(const char * __restrict  ,
+                                  char ** __restrict  , int  )
+                          __attribute__((__nonnull__(1)));
+   
+
+
+
+
+ 
+extern __declspec(__nothrow) unsigned long long strtoull(const char * __restrict  ,
+                                            char ** __restrict  , int  )
+                                   __attribute__((__nonnull__(1)));
+   
+
+
+
+ 
+
+extern __declspec(__nothrow) int rand(void);
+   
+
+
+
+
+
+
+
+ 
+extern __declspec(__nothrow) void srand(unsigned int  );
+   
+
+
+
+
+
+
+ 
+
+struct _rand_state { int __x[57]; };
+extern __declspec(__nothrow) int _rand_r(struct _rand_state *);
+extern __declspec(__nothrow) void _srand_r(struct _rand_state *, unsigned int);
+struct _ANSI_rand_state { int __x[1]; };
+extern __declspec(__nothrow) int _ANSI_rand_r(struct _ANSI_rand_state *);
+extern __declspec(__nothrow) void _ANSI_srand_r(struct _ANSI_rand_state *, unsigned int);
+   
+
+
+ 
+
+extern __declspec(__nothrow) void *calloc(size_t  , size_t  );
+   
+
+
+
+ 
+extern __declspec(__nothrow) void free(void *  );
+   
+
+
+
+
+
+ 
+extern __declspec(__nothrow) void *malloc(size_t  );
+   
+
+
+
+ 
+extern __declspec(__nothrow) void *realloc(void *  , size_t  );
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+extern __declspec(__nothrow) int posix_memalign(void **  , size_t  , size_t  );
+   
+
+
+
+
+
+
+
+
+
+ 
+
+typedef int (*__heapprt)(void *, char const *, ...);
+extern __declspec(__nothrow) void __heapstats(int (*  )(void *  ,
+                                           char const *  , ...),
+                        void *  ) __attribute__((__nonnull__(1)));
+   
+
+
+
+
+
+
+
+
+
+
+ 
+extern __declspec(__nothrow) int __heapvalid(int (*  )(void *  ,
+                                           char const *  , ...),
+                       void *  , int  ) __attribute__((__nonnull__(1)));
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+extern __declspec(__nothrow) __declspec(__noreturn) void abort(void);
+   
+
+
+
+
+
+
+
+ 
+
+extern __declspec(__nothrow) int atexit(void (*  )(void)) __attribute__((__nonnull__(1)));
+   
+
+
+
+
+ 
+#line 436 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+
+
+extern __declspec(__nothrow) __declspec(__noreturn) void exit(int  );
+   
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+extern __declspec(__nothrow) __declspec(__noreturn) void _Exit(int  );
+   
+
+
+
+
+
+
+
+      
+
+extern __declspec(__nothrow) char *getenv(const char *  ) __attribute__((__nonnull__(1)));
+   
+
+
+
+
+
+
+
+
+
+ 
+
+extern __declspec(__nothrow) int  system(const char *  );
+   
+
+
+
+
+
+
+
+
+
+ 
+
+extern  void *bsearch(const void *  , const void *  ,
+              size_t  , size_t  ,
+              int (*  )(const void *, const void *)) __attribute__((__nonnull__(1,2,5)));
+   
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 524 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+
+
+extern  void qsort(void *  , size_t  , size_t  ,
+           int (*  )(const void *, const void *)) __attribute__((__nonnull__(1,4)));
+   
+
+
+
+
+
+
+
+
+
+ 
+
+#line 553 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+
+extern __declspec(__nothrow) __attribute__((const)) int abs(int  );
+   
+
+
+
+ 
+
+extern __declspec(__nothrow) __attribute__((const)) div_t div(int  , int  );
+   
+
+
+
+
+
+
+
+
+
+ 
+extern __declspec(__nothrow) __attribute__((const)) long int labs(long int  );
+   
+
+
+
+ 
+
+
+
+
+extern __declspec(__nothrow) __attribute__((const)) ldiv_t ldiv(long int  , long int  );
+   
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+extern __declspec(__nothrow) __attribute__((const)) long long llabs(long long  );
+   
+
+
+
+ 
+
+
+
+
+extern __declspec(__nothrow) __attribute__((const)) lldiv_t lldiv(long long  , long long  );
+   
+
+
+
+
+
+
+
+
+
+
+
+ 
+#line 634 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+
+
+
+
+ 
+typedef struct __sdiv32by16 { int quot, rem; } __sdiv32by16;
+typedef struct __udiv32by16 { unsigned int quot, rem; } __udiv32by16;
+    
+typedef struct __sdiv64by32 { int rem, quot; } __sdiv64by32;
+
+__value_in_regs extern __declspec(__nothrow) __attribute__((const)) __sdiv32by16 __rt_sdiv32by16(
+     int  ,
+     short int  );
+   
+
+ 
+__value_in_regs extern __declspec(__nothrow) __attribute__((const)) __udiv32by16 __rt_udiv32by16(
+     unsigned int  ,
+     unsigned short  );
+   
+
+ 
+__value_in_regs extern __declspec(__nothrow) __attribute__((const)) __sdiv64by32 __rt_sdiv64by32(
+     int  , unsigned int  ,
+     int  );
+   
+
+ 
+
+
+
+
+ 
+extern __declspec(__nothrow) unsigned int __fp_status(unsigned int  , unsigned int  );
+   
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+extern __declspec(__nothrow) int mblen(const char *  , size_t  );
+   
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+extern __declspec(__nothrow) int mbtowc(wchar_t * __restrict  ,
+                   const char * __restrict  , size_t  );
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+extern __declspec(__nothrow) int wctomb(char *  , wchar_t  );
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+extern __declspec(__nothrow) size_t mbstowcs(wchar_t * __restrict  ,
+                      const char * __restrict  , size_t  ) __attribute__((__nonnull__(2)));
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+extern __declspec(__nothrow) size_t wcstombs(char * __restrict  ,
+                      const wchar_t * __restrict  , size_t  ) __attribute__((__nonnull__(2)));
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+extern __declspec(__nothrow) void __use_realtime_heap(void);
+extern __declspec(__nothrow) void __use_realtime_division(void);
+extern __declspec(__nothrow) void __use_two_region_memory(void);
+extern __declspec(__nothrow) void __use_no_heap(void);
+extern __declspec(__nothrow) void __use_no_heap_region(void);
+
+extern __declspec(__nothrow) char const *__C_library_version_string(void);
+extern __declspec(__nothrow) int __C_library_version_number(void);
+
+
+
+
+
+
+
+
+
+
+
+#line 892 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
+
+
+
+
+
+ 
+#line 23 ".\\inc\\main.h"
 
  
 #line 1 ".\\Library\\Device\\Nuvoton\\M031\\Include\\NuMicro.h"
@@ -28528,18 +29287,203 @@ void WWDT_Open(uint32_t u32PreScale, uint32_t u32CmpValue, uint32_t u32EnableInt
 
 
  
-#line 9 ".\\inc\\main.h"
+#line 26 ".\\inc\\main.h"
 
  
-#line 12 ".\\inc\\main.h"
+#line 29 ".\\inc\\main.h"
 
  
 #line 1 ".\\inc\\led.h"
 
 
 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
 #line 1 ".\\inc\\main.h"
-#line 5 ".\\inc\\led.h"
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+#line 21 ".\\inc\\led.h"
+
+ 
+typedef struct
+{
+	GPIO_T *port;		 
+	unsigned long pin;		 
+} led_InitTypeDef;
+
+
+
+
+ 
+
+ 
+led_InitTypeDef* led_Init(GPIO_T *port, unsigned long pin);
+void led_DeInit(led_InitTypeDef *led);
+void led_SET(led_InitTypeDef *led);
+void led_RESET(led_InitTypeDef *led);
+void led_TOGGLE(led_InitTypeDef *led);
+
+ 
+int getPortNumber(GPIO_T* port);
+int getPinNumber(unsigned long u32PinMask);
+
+#line 32 ".\\inc\\main.h"
+#line 1 ".\\inc\\button.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+#line 20 ".\\inc\\button.h"
+#line 1 ".\\inc\\eventDriven.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+typedef enum
+{
+	NONE,
+	SHORT_PRESS,
+	LONG_PRESS
+} Event_Type;
+
+ 
+typedef enum
+{
+	LED_ON,
+	LED_OFF
+} LED_state;
+
+
+ 
+struct Event
+{
+	Event_Type mode;
+	LED_state led_state;
+	unsigned long Time;
+	int state_Counter;
+	struct Event *next;
+};
+
+
+
+
+ 
+int enqueue(Event_Type type);
+Event_Type dequeue(struct Event *event);
+void event_Init(struct Event *event);
+
+#line 21 ".\\inc\\button.h"
+
+ 
+typedef struct
+{
+	GPIO_T *port;		 
+	unsigned long pin;		 
+} button_InitTypeDef;
+
+
+
+
+ 
+button_InitTypeDef* button_Init(GPIO_T *port, unsigned long pin);
+void button_DeInit(button_InitTypeDef *button);
+int button_Get_Status(button_InitTypeDef *button);
+int button_Read(button_InitTypeDef *button);
+
+#line 33 ".\\inc\\main.h"
+#line 1 ".\\inc\\utils.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+void GPIO_Init(void);
+void Timer_Init(void);
+void SYS_Init(void);
+void TMR1_IRQHandler(void);
+
+#line 34 ".\\inc\\main.h"
+#line 35 ".\\inc\\main.h"
+#line 1 ".\\inc\\softTimer.h"
+
+
+
+ 
+#line 6 ".\\inc\\softTimer.h"
 
  
 #line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdbool.h"
@@ -28560,117 +29504,6 @@ void WWDT_Open(uint32_t u32PreScale, uint32_t u32CmpValue, uint32_t u32EnableInt
 
 
 
-#line 8 ".\\inc\\led.h"
-
-typedef struct
-{
-	GPIO_T *port;
-	unsigned long pin;
-} led_InitTypeDef;
-
-typedef struct
-{
-	_Bool IsRunning;
-	volatile _Bool IsFinish;
-	unsigned int repeat;
-	unsigned long onTime;
-	unsigned long offTime;
-	unsigned long Time;
-} blink_Type;
-
-led_InitTypeDef* led_Init(GPIO_T *port, unsigned long pin);
-void led_DeInit(led_InitTypeDef *led);
-void blink(led_InitTypeDef *led, int onTime, int repeat);
-void short_press_state(led_InitTypeDef *led);
-void long_press_state(led_InitTypeDef *led);
-void led_SET(led_InitTypeDef *led);
-void led_RESET(led_InitTypeDef *led);
-void led_TOGGLE(led_InitTypeDef *led);
-int getPortNumber(GPIO_T* port);
-int getPinNumber(unsigned long u32PinMask);
-
-#line 15 ".\\inc\\main.h"
-
- 
-#line 1 ".\\inc\\button.h"
-
-
-
-#line 5 ".\\inc\\button.h"
-#line 1 ".\\inc\\eventDriven.h"
-
-
-
-typedef enum
-{
-	SHORT_PRESS,
-	LONG_PRESS
-} Event_Type;
-
-typedef enum
-{
-	LED_ON,
-	LED_OFF
-} LED_state;
-
-struct Event
-{
-	int type;
-	Event_Type mode;
-	LED_state led_state;
-	unsigned long Time;
-	struct Event *next;
-};
-
-int enqueue(int type);
-int dequeue(struct Event *event);
-
-#line 6 ".\\inc\\button.h"
-
-typedef struct
-{
-	GPIO_T *port;
-	unsigned long pin;
-} button_InitTypeDef;
-
-button_InitTypeDef* button_Init(GPIO_T *port, unsigned long pin);
-void button_DeInit(button_InitTypeDef *button);
-int button_Get_Status(button_InitTypeDef *button);
-int button_Read(button_InitTypeDef *button);
-
-#line 18 ".\\inc\\main.h"
-
- 
-#line 1 ".\\inc\\utils.h"
-
-
-
-
-
-
-
- 
-  
- 
-void GPIO_Init(void);
-void Timer_Init(void);
-void SYS_Init(void);
-void TMR1_IRQHandler(void);
-
-#line 21 ".\\inc\\main.h"
-
- 
-#line 24 ".\\inc\\main.h"
-
- 
-#line 1 ".\\inc\\softTimer.h"
-
-
-
- 
-#line 6 ".\\inc\\softTimer.h"
-
- 
 #line 9 ".\\inc\\softTimer.h"
 
 
@@ -28685,759 +29518,9 @@ void SoftTimer_SetTimer(uint8_t TimerNo, uint32_t SetTimeMs);
 _Bool SoftTimer_GetTimerStatus(uint8_t TimerNo);
 void SoftTimer_ResetTimer(uint8_t TimerNo);
 
-#line 27 ".\\inc\\main.h"
+#line 36 ".\\inc\\main.h"
 
- 
-#line 1 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
- 
- 
- 
-
-
-
-
- 
- 
-
-
-
- 
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
- 
-
-
-
-
-
-
-
-
-#line 54 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
-
-
-  
-
-
-
-    typedef unsigned int size_t;    
-#line 70 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
-
-
-
-
-
-
-    
-
-
-
-    typedef unsigned short wchar_t;  
-#line 91 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
-
-typedef struct div_t { int quot, rem; } div_t;
-    
-typedef struct ldiv_t { long int quot, rem; } ldiv_t;
-    
-
-typedef struct lldiv_t { long long quot, rem; } lldiv_t;
-    
-
-
-#line 112 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
-   
-
-
-
- 
-
-   
-
-
-
-
- 
-#line 131 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
-   
-
-
- 
-extern __declspec(__nothrow) int __aeabi_MB_CUR_MAX(void);
-
-   
-
-
-
-
- 
-
-   
-
-
-
-
- 
-
-
-
-
-extern __declspec(__nothrow) double atof(const char *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
- 
-extern __declspec(__nothrow) int atoi(const char *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
- 
-extern __declspec(__nothrow) long int atol(const char *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
- 
-
-extern __declspec(__nothrow) long long atoll(const char *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
- 
-
-
-extern __declspec(__nothrow) double strtod(const char * __restrict  , char ** __restrict  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) float strtof(const char * __restrict  , char ** __restrict  ) __attribute__((__nonnull__(1)));
-extern __declspec(__nothrow) long double strtold(const char * __restrict  , char ** __restrict  ) __attribute__((__nonnull__(1)));
-   
-
- 
-
-extern __declspec(__nothrow) long int strtol(const char * __restrict  ,
-                        char ** __restrict  , int  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) unsigned long int strtoul(const char * __restrict  ,
-                                       char ** __restrict  , int  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
- 
-extern __declspec(__nothrow) long long strtoll(const char * __restrict  ,
-                                  char ** __restrict  , int  )
-                          __attribute__((__nonnull__(1)));
-   
-
-
-
-
- 
-extern __declspec(__nothrow) unsigned long long strtoull(const char * __restrict  ,
-                                            char ** __restrict  , int  )
-                                   __attribute__((__nonnull__(1)));
-   
-
-
-
- 
-
-extern __declspec(__nothrow) int rand(void);
-   
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) void srand(unsigned int  );
-   
-
-
-
-
-
-
- 
-
-struct _rand_state { int __x[57]; };
-extern __declspec(__nothrow) int _rand_r(struct _rand_state *);
-extern __declspec(__nothrow) void _srand_r(struct _rand_state *, unsigned int);
-struct _ANSI_rand_state { int __x[1]; };
-extern __declspec(__nothrow) int _ANSI_rand_r(struct _ANSI_rand_state *);
-extern __declspec(__nothrow) void _ANSI_srand_r(struct _ANSI_rand_state *, unsigned int);
-   
-
-
- 
-
-extern __declspec(__nothrow) void *calloc(size_t  , size_t  );
-   
-
-
-
- 
-extern __declspec(__nothrow) void free(void *  );
-   
-
-
-
-
-
- 
-extern __declspec(__nothrow) void *malloc(size_t  );
-   
-
-
-
- 
-extern __declspec(__nothrow) void *realloc(void *  , size_t  );
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) int posix_memalign(void **  , size_t  , size_t  );
-   
-
-
-
-
-
-
-
-
-
- 
-
-typedef int (*__heapprt)(void *, char const *, ...);
-extern __declspec(__nothrow) void __heapstats(int (*  )(void *  ,
-                                           char const *  , ...),
-                        void *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int __heapvalid(int (*  )(void *  ,
-                                           char const *  , ...),
-                       void *  , int  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) __declspec(__noreturn) void abort(void);
-   
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) int atexit(void (*  )(void)) __attribute__((__nonnull__(1)));
-   
-
-
-
-
- 
-#line 436 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
-
-
-extern __declspec(__nothrow) __declspec(__noreturn) void exit(int  );
-   
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) __declspec(__noreturn) void _Exit(int  );
-   
-
-
-
-
-
-
-
-      
-
-extern __declspec(__nothrow) char *getenv(const char *  ) __attribute__((__nonnull__(1)));
-   
-
-
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) int  system(const char *  );
-   
-
-
-
-
-
-
-
-
-
- 
-
-extern  void *bsearch(const void *  , const void *  ,
-              size_t  , size_t  ,
-              int (*  )(const void *, const void *)) __attribute__((__nonnull__(1,2,5)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
- 
-#line 524 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
-
-
-extern  void qsort(void *  , size_t  , size_t  ,
-           int (*  )(const void *, const void *)) __attribute__((__nonnull__(1,4)));
-   
-
-
-
-
-
-
-
-
-
- 
-
-#line 553 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
-
-extern __declspec(__nothrow) __attribute__((const)) int abs(int  );
-   
-
-
-
- 
-
-extern __declspec(__nothrow) __attribute__((const)) div_t div(int  , int  );
-   
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) __attribute__((const)) long int labs(long int  );
-   
-
-
-
- 
-
-
-
-
-extern __declspec(__nothrow) __attribute__((const)) ldiv_t ldiv(long int  , long int  );
-   
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-extern __declspec(__nothrow) __attribute__((const)) long long llabs(long long  );
-   
-
-
-
- 
-
-
-
-
-extern __declspec(__nothrow) __attribute__((const)) lldiv_t lldiv(long long  , long long  );
-   
-
-
-
-
-
-
-
-
-
-
-
- 
-#line 634 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
-
-
-
-
- 
-typedef struct __sdiv32by16 { int quot, rem; } __sdiv32by16;
-typedef struct __udiv32by16 { unsigned int quot, rem; } __udiv32by16;
-    
-typedef struct __sdiv64by32 { int rem, quot; } __sdiv64by32;
-
-__value_in_regs extern __declspec(__nothrow) __attribute__((const)) __sdiv32by16 __rt_sdiv32by16(
-     int  ,
-     short int  );
-   
-
- 
-__value_in_regs extern __declspec(__nothrow) __attribute__((const)) __udiv32by16 __rt_udiv32by16(
-     unsigned int  ,
-     unsigned short  );
-   
-
- 
-__value_in_regs extern __declspec(__nothrow) __attribute__((const)) __sdiv64by32 __rt_sdiv64by32(
-     int  , unsigned int  ,
-     int  );
-   
-
- 
-
-
-
-
- 
-extern __declspec(__nothrow) unsigned int __fp_status(unsigned int  , unsigned int  );
-   
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int mblen(const char *  , size_t  );
-   
-
-
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int mbtowc(wchar_t * __restrict  ,
-                   const char * __restrict  , size_t  );
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) int wctomb(char *  , wchar_t  );
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
- 
-extern __declspec(__nothrow) size_t mbstowcs(wchar_t * __restrict  ,
-                      const char * __restrict  , size_t  ) __attribute__((__nonnull__(2)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-extern __declspec(__nothrow) size_t wcstombs(char * __restrict  ,
-                      const wchar_t * __restrict  , size_t  ) __attribute__((__nonnull__(2)));
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-extern __declspec(__nothrow) void __use_realtime_heap(void);
-extern __declspec(__nothrow) void __use_realtime_division(void);
-extern __declspec(__nothrow) void __use_two_region_memory(void);
-extern __declspec(__nothrow) void __use_no_heap(void);
-extern __declspec(__nothrow) void __use_no_heap_region(void);
-
-extern __declspec(__nothrow) char const *__C_library_version_string(void);
-extern __declspec(__nothrow) int __C_library_version_number(void);
-
-
-
-
-
-
-
-
-
-
-
-#line 892 "C:\\Keil_v5\\ARM\\ARMCC\\Bin\\..\\include\\stdlib.h"
-
-
-
-
-
- 
-#line 30 ".\\inc\\main.h"
-
-
-
-
-
-
- 
-  
-
-
-
-#line 9 "src\\main.c"
+#line 14 "src\\main.c"
 
 
 
@@ -29448,30 +29531,42 @@ extern __declspec(__nothrow) int __C_library_version_number(void);
  
 int main()
 {
+	 
 	struct Event event;
+	Event_Type currentMode;
 	button_InitTypeDef *button1;
 	led_InitTypeDef *led1;
 	
-	LED_state lastLedState;
+	LED_state lastLedState = LED_OFF;
 	
+	 
     SYS_Init();
+	
+	 
 	Timer_Init();
+	
+	 
 	SoftTimer_Init();
+	
+	 
+	event_Init(&event);
 
+	 
 	button1 = button_Init(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00008000UL));
 	led1 = led_Init(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00004000UL));
 	
-	event.Time = 1000;
-	event.mode = SHORT_PRESS;
-	
+	 
     while(1)
 	{
+		 
 		switch (event.mode) 
 		{
+			 
 			case SHORT_PRESS:
 			{
 				switch(event.led_state)
 				{
+					 
 					case LED_ON:
 					{
 						if(lastLedState != event.led_state)
@@ -29480,7 +29575,10 @@ int main()
 						}
 						if(SoftTimer_GetTimerStatus(2))
 						{
+							lastLedState = event.led_state;
 							event.led_state = LED_OFF;
+							SoftTimer_ResetTimer(2);
+							break;
 						}
 						
 						led_SET(led1);
@@ -29491,6 +29589,7 @@ int main()
 						break;
 					}
 					
+					 
 					case LED_OFF:
 					{
 						if(lastLedState != event.led_state)
@@ -29499,23 +29598,49 @@ int main()
 						}
 						if(SoftTimer_GetTimerStatus(2))
 						{
-							event.led_state = LED_OFF;
+							lastLedState = event.led_state;
+							event.led_state = LED_ON;
+							SoftTimer_ResetTimer(2);
+							
+							event.state_Counter++;
+						
+							if(event.state_Counter == 2)
+							{
+								event.Time = 2000;
+							}
+							else if(event.state_Counter == 4)
+							{
+								event.Time = 1000;
+								event.state_Counter = 0;
+								
+								currentMode = dequeue(&event);
+								
+								if(currentMode != NONE && currentMode != event.mode)
+								{
+									event.mode = currentMode;
+								}
+							}
+							
+							break;
 						}
 						
 						led_RESET(led1);
 						
 						button_Get_Status(button1);
 						
+						lastLedState = event.led_state;
 						break;
 					}
 				}
 				break;
 			}
-				
+			
+			 
 			case LONG_PRESS:
 			{
 				switch(event.led_state)
 				{
+					 
 					case LED_ON:
 					{
 						if(lastLedState != event.led_state)
@@ -29524,16 +29649,21 @@ int main()
 						}
 						if(SoftTimer_GetTimerStatus(2))
 						{
+							lastLedState = event.led_state;
 							event.led_state = LED_OFF;
+							SoftTimer_ResetTimer(2);
+							break;
 						}
 						
 						led_SET(led1);
 						
 						button_Get_Status(button1);
 						
+						lastLedState = event.led_state;
 						break;
 					}
 					
+					 
 					case LED_OFF:
 					{
 						if(lastLedState != event.led_state)
@@ -29542,18 +29672,48 @@ int main()
 						}
 						if(SoftTimer_GetTimerStatus(2))
 						{
-							event.led_state = LED_OFF;
+							lastLedState = event.led_state;
+							event.led_state = LED_ON;
+							SoftTimer_ResetTimer(2);
+							
+							event.state_Counter++;
+						
+							if(event.state_Counter == 4)
+							{
+								event.Time = 2000;
+							}
+							else if(event.state_Counter == 8)
+							{
+								event.Time = 1000;
+								event.state_Counter = 0;
+								
+								currentMode = dequeue(&event);
+								
+								if(currentMode != NONE && currentMode != event.mode)
+								{
+									event.mode = currentMode;
+								}
+							}
+							
+							break;
 						}
 						
 						led_RESET(led1);
 						
 						button_Get_Status(button1);
 						
+						lastLedState = event.led_state;
 						break;
 					}
-				}			
+				}
 				break;
 			}
+			
+			case NONE:
+			{
+				break;
+			}
+						
 		}
 	}
 }

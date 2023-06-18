@@ -38,35 +38,77 @@ https://www.state-machine.com/qpc/exa.html</documentation>
     <!--${AOs::Blinky::SM::initial}-->
     <initial target="../1">
      <action>Init_State</action>
-     <initial_glyph conn="2,3,5,1,55,8,-11">
-      <action box="0,-1,14,4"/>
+     <initial_glyph conn="2,3,5,1,55,8,-7">
+      <action box="0,-1,12,4"/>
      </initial_glyph>
     </initial>
     <!--${AOs::Blinky::SM::SHORT PRESS STATE}-->
     <state name="SHORT PRESS STATE">
      <!--${AOs::Blinky::SM::SHORT PRESS STAT~::Led OFF}-->
      <state name="Led OFF">
+      <!--${AOs::Blinky::SM::SHORT PRESS STAT~::Led OFF::TimeOut}-->
+      <tran trig="TimeOut" target="../../1">
+       <action brief="state = LED_ON"/>
+       <tran_glyph conn="4,33,3,1,42,-19,-6">
+        <action box="0,-2,23,2"/>
+       </tran_glyph>
+      </tran>
+      <!--${AOs::Blinky::SM::SHORT PRESS STAT~::Led OFF::Buttun Long Press}-->
+      <tran trig="Buttun Long Press" target="../../../2">
+       <action brief="Go Long Press State"/>
+       <tran_glyph conn="4,37,3,1,50,19,-4">
+        <action box="0,-2,36,2"/>
+       </tran_glyph>
+      </tran>
       <state_glyph node="4,29,36,15"/>
      </state>
      <!--${AOs::Blinky::SM::SHORT PRESS STAT~::Led ON}-->
      <state name="Led ON">
+      <!--${AOs::Blinky::SM::SHORT PRESS STAT~::Led ON::TimeOut}-->
+      <tran trig="TimeOut" target="../../0">
+       <action brief="state = LED_OFF"/>
+       <tran_glyph conn="4,16,3,1,38,15,-2">
+        <action box="0,-2,24,4"/>
+       </tran_glyph>
+      </tran>
       <state_glyph node="4,12,36,15"/>
      </state>
-     <state_glyph node="3,9,43,40"/>
+     <state_glyph node="3,9,47,40"/>
     </state>
     <!--${AOs::Blinky::SM::LONG PRESS STATE}-->
     <state name="LONG PRESS STATE">
      <!--${AOs::Blinky::SM::LONG PRESS STATE::Led ON}-->
      <state name="Led ON">
-      <state_glyph node="82,12,36,15"/>
+      <!--${AOs::Blinky::SM::LONG PRESS STATE::Led ON::TimeOut}-->
+      <tran trig="TimeOut" target="../../1">
+       <action brief="state = LED_OFF"/>
+       <tran_glyph conn="4,61,3,1,38,15,-2">
+        <action box="0,-2,24,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="4,57,36,15"/>
      </state>
      <!--${AOs::Blinky::SM::LONG PRESS STATE::Led OFF}-->
      <state name="Led OFF">
-      <state_glyph node="82,29,36,15"/>
+      <!--${AOs::Blinky::SM::LONG PRESS STATE::Led OFF::TimeOut}-->
+      <tran trig="TimeOut" target="../../0">
+       <action brief="state = LED_ON"/>
+       <tran_glyph conn="4,78,3,1,42,-19,-6">
+        <action box="0,-2,21,2"/>
+       </tran_glyph>
+      </tran>
+      <!--${AOs::Blinky::SM::LONG PRESS STATE::Led OFF::Buttun Short Press}-->
+      <tran trig="Buttun Short Press" target="../../../1">
+       <action brief="Go Short Press State"/>
+       <tran_glyph conn="4,82,3,1,56,-68,-10">
+        <action box="0,-2,36,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="4,74,36,15"/>
      </state>
-     <state_glyph node="81,9,51,39"/>
+     <state_glyph node="3,54,47,39"/>
     </state>
-    <state_diagram size="147,98"/>
+    <state_diagram size="70,98"/>
    </statechart>
   </class>
   <!--${AOs::Blinky_ctor}-->

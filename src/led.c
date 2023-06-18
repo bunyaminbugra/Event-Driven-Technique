@@ -1,102 +1,86 @@
+/**
+  * @file: main.c
+  * @author: Bünyamin Bugra Korkmazer
+  * @date: June 18, 2023
+  * @version: 1.0
+  *
+  * @brief: Source file for LED control.
+  *
+  * @details: This file contains the implementation of the functions for LED control. 
+  * The LED can be set, reset, toggled, and blinked with specified on and off times.
+  *
+  * Revision History: 
+  * - 1.0.0 (June 18, 2023): Initial release.
+  */
+
 #include "main.h"
 
-blink_Type *blink_t;
 
+/** 
+  * @brief Initializes an LED.
+  * @param port: Pointer to the GPIO port where the LED is connected.
+  * @param pin: Number of the pin where the LED is connected.
+  * @return: Pointer to the initialized LED object.
+  */
 led_InitTypeDef* led_Init(GPIO_T *port, unsigned long pin)
 {
+	/* Allocate memory for LED object */
 	led_InitTypeDef *led = (led_InitTypeDef *)malloc(sizeof(led_InitTypeDef));
 	
+	/* Set the led's GPIO port and pin */
 	led->port = port;
 	led->pin = pin;
 	
+	/* Set GPIO pin as output */
 	GPIO_SetMode(port, pin, GPIO_MODE_OUTPUT);
 	
+	/* Reset LED for initial state */
 	led_RESET(led);
 	
 	return led;
 }
 
+/** 
+  * @brief Deinitializes an LED.
+  * @param led: Pointer to the LED object to be deinitialized.
+  * @return None
+  */
 void led_DeInit(led_InitTypeDef *led)
 {
+	/* Freeing the memory allocated for the led */
 	free(led);
 }
 
-/**
- * @brief   LED'in belirli bir süre boyunca yanip sönmesini saglar.
- * 
- * @param   onTime  LED'in açik kalacagi süre (milisaniye cinsinden).
- * @param   offTime LED'in kapali kalacagi süre (milisaniye cinsinden).
- * @param   repeat  Yanip sönmeyi tekrarlama sayisi.
- * 
- * Bu fonksiyon, LED'in belirli bir süre boyunca yanip sönmesini saglar.
- * Yanma ve sönme süreleri, belirtilen 'onTime' ve 'offTime' parametreleri
- * ile ayarlanabilir. Yanip sönme döngüsü, 'repeat' parametresi kadar tekrarlanir.
- * 
- * Örnegin, blink(1000, 500, 3) çagrisi LED'i 1000 ms boyunca açar, 
- * sonra 500 ms boyunca kapatir ve bu döngüyü 3 kez tekrarlar.
- * 
- * @author  Bünyamin Bugra Korkmazer
- * 
- */
-void blink(led_InitTypeDef *led, int onTime, int repeat)
-{    
-	int i;
-	
-	for(i=0; i<repeat; i++)
-	{
-		led_SET(led);	// LED'i aç
-        CLK_SysTickDelay(onTime * 1000); // onTime süresi kadar beklet // ?????????????????????????????????????????????
-        led_RESET(led);	// LED'i kapat
-        CLK_SysTickDelay(onTime * 1000); // offTime süresi kadar beklet // ?????????????????????????????????????????????
-    }
-}
-
-/**
-  * @brief   Kisa basma durumu için yapilacak islemler
-  * @details Bu islev, kullanicinin dügmeye kisa bir süre basmasi durumunda çagrilir.
-  *          LED'i 1 saniyelik periyotlarla 2 kez ve 2 saniyelik periyotlarla 2 kez yanip söndürür.
-  * @param   Yok
-  * @return  Yok
-  * @author  Bünyamin Bugra Korkmazer
+/** 
+  * @brief Turns ON an LED.
+  * @param led: Pointer to the LED to turn ON.
+  * @return None
   */
-void short_press_state(led_InitTypeDef *led)
-{
-    /* LED'i 1 saniyelik periyotlarla 2 defa yanip söndür */
-    blink(led, 250, 2);
-
-    /* LED'i 2 saniyelik periyotlarla 2 defa yanip söndür */
-    blink(led, 500, 2);
-}
-
-/**
-  * @brief   Uzun basma durumu için yapilacak islemler
-  * @details Bu islev, kullanicinin dügmeye uzun bir süre basmasi durumunda çagrilir.
-  *          LED'i 1 saniyelik periyotlarla 4 kez ve 2 saniyelik periyotlarla 4 kez yanip söndürür.
-  * @param   Yok
-  * @return  Yok
-  * @author  Bünyamin Bugra Korkmazer
-  */
-void long_press_state(led_InitTypeDef *led)
-{
-    /* LED'i 1 saniyelik periyotlarla 4 defa yanip söndür */
-    blink(led, 250, 4);
-
-    /* LED'i 2 saniyelik periyotlarla 4 defa yanip söndür */
-    blink(led, 500, 4);
-}
-
 void led_SET(led_InitTypeDef *led)
 {
+	/* Set led's state to HIGH */
 	GPIO_PIN_DATA(getPortNumber(led->port), getPinNumber(led->pin)) = 0;
 }
 
+/** 
+  * @brief Turns OFF an LED.
+  * @param led: Pointer to the LED to turn OFF.
+  * @return None
+  */
 void led_RESET(led_InitTypeDef *led)
 {
+	/* Set led's state to LOW */
 	GPIO_PIN_DATA(getPortNumber(led->port), getPinNumber(led->pin)) = 1;
 }
 
+/** 
+  * @brief Toggles the state of an LED.
+  * @param led: Pointer to the LED to toggle.
+  * @return None
+  */
 void led_TOGGLE(led_InitTypeDef *led)
 {
+	/* Change led's state */
 	GPIO_PIN_DATA(getPortNumber(led->port), getPinNumber(led->pin)) ^= 1;
 }
 
