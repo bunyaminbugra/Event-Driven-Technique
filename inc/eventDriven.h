@@ -1,13 +1,13 @@
 /**
-  * @file: event_driven.h
-  * @author: Bünyamin Bugra Korkmazer
-  * @date: June 18, 2023
-  * @version: 1.0
+  * @file:		event_driven.h
+  * @author:	Bünyamin Bugra Korkmazer
+  * @date:		June 18, 2023
+  * @version:	1.0
   *
-  * @brief: Header file for the event management of the application.
+  * @brief:		Header file for the event management of the application.
   *
-  * @details: This header file defines the Event structure, event types and LED states. 
-  *           It also includes the function prototypes for event handling.
+  * @details:	This header file defines the Event structure, event types and LED states. 
+  *It also includes the function prototypes for event handling.
   *
   * Revision History: 
   * - 1.0.0 (June 18, 2023): Initial release.
@@ -43,11 +43,13 @@ struct Event
 };
 
 /**
-  * @section   Function Prototypes
-  * @brief     This section includes function prototypes.
+  * @section	Function Prototypes
+  * @brief		This section includes function prototypes.
   */
 int enqueue(Event_Type type);
 Event_Type dequeue(struct Event *event);
 void event_Init(struct Event *event);
 
 #endif
+
+/* End of the file */

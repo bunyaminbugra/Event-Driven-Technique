@@ -1,8 +1,8 @@
 L 1 "src\main.c"
 N/**
 N  * @file:		main.c
-N  * @author:    Bünyamin Bugra Korkmazer
-N  * @date:      June 18, 2023
+N  * @author:	Bünyamin Bugra Korkmazer
+N  * @date:		June 18, 2023
 N  * @version:	V1.0
 N  *
 N  * @brief:		EAE Group Job Interview Application
@@ -33099,15 +33099,15 @@ N/* Include other necessary header files */
 N#include "led.h"
 L 1 ".\inc\led.h" 1
 N/**
-N  * @file: LED.h
-N  * @author: Bünyamin Bugra Korkmazer
-N  * @date: June 18, 2023
-N  * @version: 1.0
+N  * @file:		LED.h
+N  * @author:	Bünyamin Bugra Korkmazer
+N  * @date:		June 18, 2023
+N  * @version:	1.0
 N  *
-N  * @brief: Header file for LED control functions.
+N  * @brief:		Header file for LED control functions.
 N  *
-N  * @details: This file declares the types and functions used in controlling the LED. 
-N  * It includes the structures for LED and Blink type, as well as the function prototypes.
+N  * @details:	This file declares the types and functions used in controlling the LED. 
+N  *It includes the structures for LED and Blink type, as well as the function prototypes.
 N  *
 N  * Revision History: 
 N  * - 1.0.0 (June 18, 2023): Initial release.
@@ -33156,6 +33156,8 @@ S#include "eventDriven.h"
 S#include "softTimer.h"
 S
 N#endif
+N
+N/* End of the file */
 L 21 ".\inc\led.h" 2
 N
 N/* Structure for LED Initialization */
@@ -33166,8 +33168,8 @@ N	unsigned long pin;		/* Pin number for the button */
 N} led_InitTypeDef;
 N
 N/**
-N  * @section   Function Prototypes
-N  * @brief     This section includes function prototypes.
+N  * @section	Function Prototypes
+N  * @brief		This section includes function prototypes.
 N  */
 N
 N/* Function prototypes for LED control */
@@ -33182,18 +33184,20 @@ Nint getPortNumber(GPIO_T* port);
 Nint getPinNumber(unsigned long u32PinMask);
 N
 N#endif
+N
+N/* End of the file */
 L 32 ".\inc\main.h" 2
 N#include "button.h"
 L 1 ".\inc\button.h" 1
 N/** 
-N  * @file: button.h
-N  * @author: Bünyamin Buðra Korkmazer
-N  * @date: June 18, 2023
-N  * @version: 1.0
+N  * @file:		button.h
+N  * @author:	Bünyamin Buðra Korkmazer
+N  * @date:		June 18, 2023
+N  * @version:	1.0
 N  *
-N  * @brief: Header file for button handling mechanism.
+N  * @brief:		Header file for button handling mechanism.
 N  *
-N  * @details: This file contains the definitions of the functions and structure for a 
+N  * @details:	This file contains the definitions of the functions and structure for a 
 N  * button handling mechanism, considering debounce and long press situations.
 N  *
 N  * Revision History: 
@@ -33207,15 +33211,15 @@ N#include "main.h"
 N#include "eventDriven.h"
 L 1 ".\inc\eventDriven.h" 1
 N/**
-N  * @file: event_driven.h
-N  * @author: Bünyamin Bugra Korkmazer
-N  * @date: June 18, 2023
-N  * @version: 1.0
+N  * @file:		event_driven.h
+N  * @author:	Bünyamin Bugra Korkmazer
+N  * @date:		June 18, 2023
+N  * @version:	1.0
 N  *
-N  * @brief: Header file for the event management of the application.
+N  * @brief:		Header file for the event management of the application.
 N  *
-N  * @details: This header file defines the Event structure, event types and LED states. 
-N  *           It also includes the function prototypes for event handling.
+N  * @details:	This header file defines the Event structure, event types and LED states. 
+N  *It also includes the function prototypes for event handling.
 N  *
 N  * Revision History: 
 N  * - 1.0.0 (June 18, 2023): Initial release.
@@ -33251,14 +33255,16 @@ N	struct Event *next;
 N};
 N
 N/**
-N  * @section   Function Prototypes
-N  * @brief     This section includes function prototypes.
+N  * @section	Function Prototypes
+N  * @brief		This section includes function prototypes.
 N  */
 Nint enqueue(Event_Type type);
 NEvent_Type dequeue(struct Event *event);
 Nvoid event_Init(struct Event *event);
 N
 N#endif
+N
+N/* End of the file */
 L 21 ".\inc\button.h" 2
 N
 N/* The structure definition for a button. Contains the port and pin information. */
@@ -33269,8 +33275,8 @@ N	unsigned long pin;		/* Pin number for the button */
 N} button_InitTypeDef;
 N
 N/**
-N  * @section   Function Prototypes
-N  * @brief     This section includes function prototypes.
+N  * @section	Function Prototypes
+N  * @brief		This section includes function prototypes.
 N  */
 Nbutton_InitTypeDef* button_Init(GPIO_T *port, unsigned long pin);
 Nvoid button_DeInit(button_InitTypeDef *button);
@@ -33278,6 +33284,8 @@ Nint button_Get_Status(button_InitTypeDef *button);
 Nint button_Read(button_InitTypeDef *button);
 N
 N#endif
+N
+N/* End of the file */
 L 33 ".\inc\main.h" 2
 N#include "utils.h"
 L 1 ".\inc\utils.h" 1
@@ -33290,9 +33298,9 @@ N  *
 N  * @brief:		Header file for the utility functions used throughout the application.
 N  *
 N  * @details:	This file declares the prototypes for the functions used for initializing system setup, 
-N  *           	handling GPIO and timer initialization, and interrupt handling. These functions are 
-N  *           	defined in their respective source files. Include this header file in any source file 
-N  *           	where these functions are needed.
+N  * handling GPIO and timer initialization, and interrupt handling. These functions are 
+N  * defined in their respective source files. Include this header file in any source file 
+N  * where these functions are needed.
 N  *
 N  * Revision History: 
 N  * - 1.0.0 (June 18, 2023): Initial release.
@@ -33302,8 +33310,8 @@ N#ifndef UTILS_H
 N#define UTILS_H
 N
 N/**
-N  * @section   Function Prototypes
-N  * @brief     This section includes function prototypes.
+N  * @section	Function Prototypes
+N  * @brief		This section includes function prototypes.
 N  */
 Nvoid GPIO_Init(void);
 Nvoid Timer_Init(void);
@@ -33311,6 +33319,8 @@ Nvoid SYS_Init(void);
 Nvoid TMR1_IRQHandler(void);
 N
 N#endif
+N
+N/* End of the file */
 L 34 ".\inc\main.h" 2
 N#include "eventDriven.h"
 N#include "softTimer.h"
@@ -33367,17 +33377,21 @@ X_Bool SoftTimer_GetTimerStatus(uint8_t TimerNo);
 Nvoid SoftTimer_ResetTimer(uint8_t TimerNo);
 N
 N#endif
+N
+N/* End of the file */
 L 36 ".\inc\main.h" 2
 N
 N#endif
+N
+N/* End of the file */
 L 14 "src\main.c" 2
 N
 N/**
-N  * @brief   Main function
-N  * @details This is the entry point of the program.
-N  * @param   None
-N  * @return  Integer value indicating the exit status
-N  * @note    The main function should return an exit status indicating the program's termination status.
+N  * @brief		Main function
+N  * @details	This is the entry point of the program.
+N  * @param		None
+N  * @return		Integer value indicating the exit status
+N  * @note		The main function should return an exit status indicating the program's termination status.
 N  */
 Nint main()
 N{
@@ -33390,7 +33404,7 @@ N
 N	LED_state lastLedState = LED_OFF;
 N	
 N	/* Initialization of the system */
-N    SYS_Init();
+N	SYS_Init();
 N	
 N	/* Timer initialization */
 N	Timer_Init();
@@ -33408,7 +33422,7 @@ N	led1 = led_Init(PB, BIT14);
 X	led1 = led_Init(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00004000UL));
 N	
 N	/* Main program loop */
-N    while(1)
+N	while(1)
 N	{
 N		/* Handling of events based on their type */
 N		switch (event.mode) 
@@ -33423,6 +33437,7 @@ N					case LED_ON:
 N					{
 N						if(lastLedState != event.led_state)
 N						{
+N							led_SET(led1);
 N							SoftTimer_SetTimer(TIMER_LED, event.Time);
 X							SoftTimer_SetTimer(2, event.Time);
 N						}
@@ -33436,8 +33451,6 @@ X							SoftTimer_ResetTimer(2);
 N							break;
 N						}
 N						
-N						led_SET(led1);
-N						
 N						button_Get_Status(button1);
 N						
 N						lastLedState = event.led_state;
@@ -33449,6 +33462,7 @@ N					case LED_OFF:
 N					{
 N						if(lastLedState != event.led_state)
 N						{
+N							led_RESET(led1);
 N							SoftTimer_SetTimer(TIMER_LED, event.Time);
 X							SoftTimer_SetTimer(2, event.Time);
 N						}
@@ -33475,14 +33489,12 @@ N								currentMode = dequeue(&event);
 N								
 N								if(currentMode != NONE && currentMode != event.mode)
 N								{
-N									event.mode = currentMode;
+N									event.mode = currentMode;									
 N								}
 N							}
 N							
 N							break;
 N						}
-N						
-N						led_RESET(led1);
 N						
 N						button_Get_Status(button1);
 N						
@@ -33503,6 +33515,7 @@ N					case LED_ON:
 N					{
 N						if(lastLedState != event.led_state)
 N						{
+N							led_SET(led1);
 N							SoftTimer_SetTimer(TIMER_LED, event.Time);
 X							SoftTimer_SetTimer(2, event.Time);
 N						}
@@ -33516,8 +33529,6 @@ X							SoftTimer_ResetTimer(2);
 N							break;
 N						}
 N						
-N						led_SET(led1);
-N						
 N						button_Get_Status(button1);
 N						
 N						lastLedState = event.led_state;
@@ -33529,6 +33540,7 @@ N					case LED_OFF:
 N					{
 N						if(lastLedState != event.led_state)
 N						{
+N							led_RESET(led1);
 N							SoftTimer_SetTimer(TIMER_LED, event.Time);
 X							SoftTimer_SetTimer(2, event.Time);
 N						}
@@ -33562,8 +33574,6 @@ N
 N							break;
 N						}
 N						
-N						led_RESET(led1);
-N						
 N						button_Get_Status(button1);
 N						
 N						lastLedState = event.led_state;
@@ -33572,12 +33582,8 @@ N					}
 N				}
 N				break;
 N			}
-N			
-N			case NONE:
-N			{
-N				break;
-N			}
-N						
 N		}
 N	}
 N}
+N
+N/* End of the file */

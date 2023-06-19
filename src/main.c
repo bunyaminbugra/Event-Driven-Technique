@@ -1,7 +1,7 @@
 /**
   * @file:		main.c
-  * @author:    Bünyamin Bugra Korkmazer
-  * @date:      June 18, 2023
+  * @author:	Bünyamin Bugra Korkmazer
+  * @date:		June 18, 2023
   * @version:	V1.0
   *
   * @brief:		EAE Group Job Interview Application
@@ -13,11 +13,11 @@
 #include "main.h"
 
 /**
-  * @brief   Main function
-  * @details This is the entry point of the program.
-  * @param   None
-  * @return  Integer value indicating the exit status
-  * @note    The main function should return an exit status indicating the program's termination status.
+  * @brief		Main function
+  * @details	This is the entry point of the program.
+  * @param		None
+  * @return		Integer value indicating the exit status
+  * @note		The main function should return an exit status indicating the program's termination status.
   */
 int main()
 {
@@ -30,7 +30,7 @@ int main()
 	LED_state lastLedState = LED_OFF;
 	
 	/* Initialization of the system */
-    SYS_Init();
+	SYS_Init();
 	
 	/* Timer initialization */
 	Timer_Init();
@@ -46,7 +46,7 @@ int main()
 	led1 = led_Init(PB, BIT14);
 	
 	/* Main program loop */
-    while(1)
+	while(1)
 	{
 		/* Handling of events based on their type */
 		switch (event.mode) 
@@ -61,6 +61,7 @@ int main()
 					{
 						if(lastLedState != event.led_state)
 						{
+							led_SET(led1);
 							SoftTimer_SetTimer(TIMER_LED, event.Time);
 						}
 						if(SoftTimer_GetTimerStatus(TIMER_LED))
@@ -70,8 +71,6 @@ int main()
 							SoftTimer_ResetTimer(TIMER_LED);
 							break;
 						}
-						
-						led_SET(led1);
 						
 						button_Get_Status(button1);
 						
@@ -84,6 +83,7 @@ int main()
 					{
 						if(lastLedState != event.led_state)
 						{
+							led_RESET(led1);
 							SoftTimer_SetTimer(TIMER_LED, event.Time);
 						}
 						if(SoftTimer_GetTimerStatus(TIMER_LED))
@@ -107,14 +107,12 @@ int main()
 								
 								if(currentMode != NONE && currentMode != event.mode)
 								{
-									event.mode = currentMode;
+									event.mode = currentMode;									
 								}
 							}
 							
 							break;
 						}
-						
-						led_RESET(led1);
 						
 						button_Get_Status(button1);
 						
@@ -135,6 +133,7 @@ int main()
 					{
 						if(lastLedState != event.led_state)
 						{
+							led_SET(led1);
 							SoftTimer_SetTimer(TIMER_LED, event.Time);
 						}
 						if(SoftTimer_GetTimerStatus(TIMER_LED))
@@ -144,8 +143,6 @@ int main()
 							SoftTimer_ResetTimer(TIMER_LED);
 							break;
 						}
-						
-						led_SET(led1);
 						
 						button_Get_Status(button1);
 						
@@ -158,6 +155,7 @@ int main()
 					{
 						if(lastLedState != event.led_state)
 						{
+							led_RESET(led1);
 							SoftTimer_SetTimer(TIMER_LED, event.Time);
 						}
 						if(SoftTimer_GetTimerStatus(TIMER_LED))
@@ -188,8 +186,6 @@ int main()
 							break;
 						}
 						
-						led_RESET(led1);
-						
 						button_Get_Status(button1);
 						
 						lastLedState = event.led_state;
@@ -198,12 +194,8 @@ int main()
 				}
 				break;
 			}
-			
-			case NONE:
-			{
-				break;
-			}
-						
 		}
 	}
 }
+
+/* End of the file */

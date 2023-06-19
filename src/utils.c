@@ -1,16 +1,16 @@
 /**
-  * @file: main.c
-  * @author: Bünyamin Bugra Korkmazer
-  * @date: June 18, 2023
-  * @version: 1.0
+  * @file:		main.c
+  * @author:	Bünyamin Bugra Korkmazer
+  * @date:		June 18, 2023
+  * @version:	1.0
   *
-  * @brief: Main source file for the application.
+  * @brief:		Main source file for the application.
   *
-  * @details: This file includes the implementations of system initialization and timer related functions. 
-  *           The functions handle the system setup, timer initialization and timer interrupt handling. 
-  *           The function SYS_Init() is used to setup system clock, GPIO and module clocks. 
-  *           Timer_Init() function is used to initialize the timer, and the TMR1_IRQHandler() 
-  *           is the interrupt handler for TIMER1.
+  * @details:	This file includes the implementations of system initialization and timer related functions. 
+  * The functions handle the system setup, timer initialization and timer interrupt handling. 
+  * The function SYS_Init() is used to setup system clock, GPIO and module clocks. 
+  * Timer_Init() function is used to initialize the timer, and the TMR1_IRQHandler() 
+  * is the interrupt handler for TIMER1.
   *
   * Revision History: 
   * - 1.0.0 (June 18, 2023): Initial release.
@@ -19,11 +19,11 @@
 #include "main.h"
 
 /**
-  * @brief   Initialize system
-  * @details This function is used to initialize the system, including system clock, GPIO and module clocks.
-  * @param   None
-  * @return  None
-  * @note    The function must be invoked at the beginning of the program.
+  * @brief		Initialize system
+  * @details	This function is used to initialize the system, including system clock, GPIO and module clocks.
+  * @param		None
+  * @return		None
+  * @note		The function must be invoked at the beginning of the program.
   */
 void SYS_Init(void)
 {
@@ -72,17 +72,17 @@ void SYS_Init(void)
 }
 
 /**
-  * @brief   Initialize timer
-  * @details This function is used to initialize the timer, configure its mode, enable interrupt, and start the timer.
-  * @param   None
-  * @return  None
-  * @note    The function must be invoked to initialize the timer before using it.
+  * @brief		Initialize timer
+  * @details	This function is used to initialize the timer, configure its mode, enable interrupt, and start the timer.
+  * @param		None
+  * @return		None
+  * @note		The function must be invoked to initialize the timer before using it.
   */
 void Timer_Init(void)
 {
 	/*
-     * Init Timer
-     */
+	 * Init Timer
+	 */
 	
 	/* Open Timer1 in periodic mode with a prescale value of 3 */
 	TIMER_Open(TIMER1, TIMER_PERIODIC_MODE, 1000);
@@ -96,18 +96,20 @@ void Timer_Init(void)
 }
 
 /**
-  * @brief   TMR1 Interrupt Handler
-  * @details This function is called when the TIMER1 interrupt occurs.
-  * @param   None
-  * @return  None
+  * @brief		TMR1 Interrupt Handler
+  * @details	This function is called when the TIMER1 interrupt occurs.
+  * @param		None
+  * @return		None
   */
 void TMR1_IRQHandler(void)
 {
 	/* Check if TIMER1 interrupt occurred */
 	if (TIMER_GetIntFlag(TIMER1))
-    {
+	{
 		SoftTimer_ISR();
 		/* Clear the TIMER1 interrupt flag */
 		TIMER_ClearIntFlag(TIMER1);
 	}
 }
+
+/* End of the file */

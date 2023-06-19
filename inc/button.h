@@ -1,12 +1,12 @@
 /** 
-  * @file: button.h
-  * @author: Bünyamin Buðra Korkmazer
-  * @date: June 18, 2023
-  * @version: 1.0
+  * @file:		button.h
+  * @author:	Bünyamin Buðra Korkmazer
+  * @date:		June 18, 2023
+  * @version:	1.0
   *
-  * @brief: Header file for button handling mechanism.
+  * @brief:		Header file for button handling mechanism.
   *
-  * @details: This file contains the definitions of the functions and structure for a 
+  * @details:	This file contains the definitions of the functions and structure for a 
   * button handling mechanism, considering debounce and long press situations.
   *
   * Revision History: 
@@ -27,8 +27,8 @@ typedef struct
 } button_InitTypeDef;
 
 /**
-  * @section   Function Prototypes
-  * @brief     This section includes function prototypes.
+  * @section	Function Prototypes
+  * @brief		This section includes function prototypes.
   */
 button_InitTypeDef* button_Init(GPIO_T *port, unsigned long pin);
 void button_DeInit(button_InitTypeDef *button);
@@ -36,3 +36,5 @@ int button_Get_Status(button_InitTypeDef *button);
 int button_Read(button_InitTypeDef *button);
 
 #endif
+
+/* End of the file */

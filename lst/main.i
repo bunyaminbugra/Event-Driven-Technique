@@ -29328,6 +29328,9 @@ void WWDT_Open(uint32_t u32PreScale, uint32_t u32CmpValue, uint32_t u32EnableInt
 
  
 
+#line 38 ".\\inc\\main.h"
+
+ 
 #line 21 ".\\inc\\led.h"
 
  
@@ -29353,6 +29356,9 @@ void led_TOGGLE(led_InitTypeDef *led);
 int getPortNumber(GPIO_T* port);
 int getPinNumber(unsigned long u32PinMask);
 
+
+
+ 
 #line 32 ".\\inc\\main.h"
 #line 1 ".\\inc\\button.h"
 
@@ -29427,6 +29433,9 @@ int enqueue(Event_Type type);
 Event_Type dequeue(struct Event *event);
 void event_Init(struct Event *event);
 
+
+
+ 
 #line 21 ".\\inc\\button.h"
 
  
@@ -29445,6 +29454,9 @@ void button_DeInit(button_InitTypeDef *button);
 int button_Get_Status(button_InitTypeDef *button);
 int button_Read(button_InitTypeDef *button);
 
+
+
+ 
 #line 33 ".\\inc\\main.h"
 #line 1 ".\\inc\\utils.h"
 
@@ -29476,6 +29488,9 @@ void Timer_Init(void);
 void SYS_Init(void);
 void TMR1_IRQHandler(void);
 
+
+
+ 
 #line 34 ".\\inc\\main.h"
 #line 35 ".\\inc\\main.h"
 #line 1 ".\\inc\\softTimer.h"
@@ -29518,8 +29533,14 @@ void SoftTimer_SetTimer(uint8_t TimerNo, uint32_t SetTimeMs);
 _Bool SoftTimer_GetTimerStatus(uint8_t TimerNo);
 void SoftTimer_ResetTimer(uint8_t TimerNo);
 
+
+
+ 
 #line 36 ".\\inc\\main.h"
 
+
+
+ 
 #line 14 "src\\main.c"
 
 
@@ -29540,7 +29561,7 @@ int main()
 	LED_state lastLedState = LED_OFF;
 	
 	 
-    SYS_Init();
+	SYS_Init();
 	
 	 
 	Timer_Init();
@@ -29556,7 +29577,7 @@ int main()
 	led1 = led_Init(((GPIO_T *) (((( uint32_t)0x40000000) + 0x4000) + 0x0040)), (0x00004000UL));
 	
 	 
-    while(1)
+	while(1)
 	{
 		 
 		switch (event.mode) 
@@ -29571,6 +29592,7 @@ int main()
 					{
 						if(lastLedState != event.led_state)
 						{
+							led_SET(led1);
 							SoftTimer_SetTimer(2, event.Time);
 						}
 						if(SoftTimer_GetTimerStatus(2))
@@ -29580,8 +29602,6 @@ int main()
 							SoftTimer_ResetTimer(2);
 							break;
 						}
-						
-						led_SET(led1);
 						
 						button_Get_Status(button1);
 						
@@ -29594,6 +29614,7 @@ int main()
 					{
 						if(lastLedState != event.led_state)
 						{
+							led_RESET(led1);
 							SoftTimer_SetTimer(2, event.Time);
 						}
 						if(SoftTimer_GetTimerStatus(2))
@@ -29617,14 +29638,12 @@ int main()
 								
 								if(currentMode != NONE && currentMode != event.mode)
 								{
-									event.mode = currentMode;
+									event.mode = currentMode;									
 								}
 							}
 							
 							break;
 						}
-						
-						led_RESET(led1);
 						
 						button_Get_Status(button1);
 						
@@ -29645,6 +29664,7 @@ int main()
 					{
 						if(lastLedState != event.led_state)
 						{
+							led_SET(led1);
 							SoftTimer_SetTimer(2, event.Time);
 						}
 						if(SoftTimer_GetTimerStatus(2))
@@ -29654,8 +29674,6 @@ int main()
 							SoftTimer_ResetTimer(2);
 							break;
 						}
-						
-						led_SET(led1);
 						
 						button_Get_Status(button1);
 						
@@ -29668,6 +29686,7 @@ int main()
 					{
 						if(lastLedState != event.led_state)
 						{
+							led_RESET(led1);
 							SoftTimer_SetTimer(2, event.Time);
 						}
 						if(SoftTimer_GetTimerStatus(2))
@@ -29698,8 +29717,6 @@ int main()
 							break;
 						}
 						
-						led_RESET(led1);
-						
 						button_Get_Status(button1);
 						
 						lastLedState = event.led_state;
@@ -29708,12 +29725,8 @@ int main()
 				}
 				break;
 			}
-			
-			case NONE:
-			{
-				break;
-			}
-						
 		}
 	}
 }
+
+ 

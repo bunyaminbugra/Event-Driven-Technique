@@ -1,12 +1,12 @@
 /**
-  * @file: main.c
-  * @author: Bünyamin Bugra Korkmazer
-  * @date: June 18, 2023
-  * @version: 1.0
+  * @file:		main.c
+  * @author:	Bünyamin Bugra Korkmazer
+  * @date:		June 18, 2023
+  * @version:	1.0
   *
-  * @brief: Source file for LED control.
+  * @brief:		Source file for LED control.
   *
-  * @details: This file contains the implementation of the functions for LED control. 
+  * @details:	This file contains the implementation of the functions for LED control. 
   * The LED can be set, reset, toggled, and blinked with specified on and off times.
   *
   * Revision History: 
@@ -14,7 +14,6 @@
   */
 
 #include "main.h"
-
 
 /** 
   * @brief Initializes an LED.
@@ -41,9 +40,9 @@ led_InitTypeDef* led_Init(GPIO_T *port, unsigned long pin)
 }
 
 /** 
-  * @brief Deinitializes an LED.
-  * @param led: Pointer to the LED object to be deinitialized.
-  * @return None
+  * @brief	Deinitializes an LED.
+  * @param	led: Pointer to the LED object to be deinitialized.
+  * @return	None
   */
 void led_DeInit(led_InitTypeDef *led)
 {
@@ -52,9 +51,9 @@ void led_DeInit(led_InitTypeDef *led)
 }
 
 /** 
-  * @brief Turns ON an LED.
-  * @param led: Pointer to the LED to turn ON.
-  * @return None
+  * @brief	Turns ON an LED.
+  * @param	led: Pointer to the LED to turn ON.
+  * @return	None
   */
 void led_SET(led_InitTypeDef *led)
 {
@@ -63,9 +62,9 @@ void led_SET(led_InitTypeDef *led)
 }
 
 /** 
-  * @brief Turns OFF an LED.
-  * @param led: Pointer to the LED to turn OFF.
-  * @return None
+  * @brief	Turns OFF an LED.
+  * @param	led: Pointer to the LED to turn OFF.
+  * @return	None
   */
 void led_RESET(led_InitTypeDef *led)
 {
@@ -74,9 +73,9 @@ void led_RESET(led_InitTypeDef *led)
 }
 
 /** 
-  * @brief Toggles the state of an LED.
-  * @param led: Pointer to the LED to toggle.
-  * @return None
+  * @brief	Toggles the state of an LED.
+  * @param	led: Pointer to the LED to toggle.
+  * @return	None
   */
 void led_TOGGLE(led_InitTypeDef *led)
 {
@@ -85,15 +84,15 @@ void led_TOGGLE(led_InitTypeDef *led)
 }
 
 /**
-  * @brief  Converts a GPIO port pointer to the corresponding port number.
-  * @param  port: Pointer to the GPIO port.
-  * @return Port number corresponding to the GPIO port.
+  * @brief	Converts a GPIO port pointer to the corresponding port number.
+  * @param	port: Pointer to the GPIO port.
+  * @return	Port number corresponding to the GPIO port.
   */
 int getPortNumber(GPIO_T* port)
 {
-    if (port == PA) 
+	if (port == PA) 
 		return 0;
-    else if (port == PB) 
+	else if (port == PB) 
 		return 1;
 	else if (port == PC) 
 		return 2;
@@ -108,19 +107,19 @@ int getPortNumber(GPIO_T* port)
 	else if (port == PH) 
 		return 7;
 
-    else return -1;
+	else return -1;
 }
 
 /**
-  * @brief  Converts a pin mask to the corresponding pin number.
-  * @param  u32PinMask: Pin mask value.
-  * @return Pin number corresponding to the pin mask.
+  * @brief	Converts a pin mask to the corresponding pin number.
+  * @param	u32PinMask: Pin mask value.
+  * @return	Pin number corresponding to the pin mask.
   */
 int getPinNumber(unsigned long u32PinMask)
 {
-    if (u32PinMask == BIT0) 
+	if (u32PinMask == BIT0) 
 		return 0;
-    else if (u32PinMask == BIT1) 
+	else if (u32PinMask == BIT1) 
 		return 1;
 	else if (u32PinMask == BIT2) 
 		return 2;
@@ -151,5 +150,7 @@ int getPinNumber(unsigned long u32PinMask)
 	else if (u32PinMask == BIT15) 
 		return 15;
 
-    else return -1;
+	else return -1;
 }
+
+/* End of the file */

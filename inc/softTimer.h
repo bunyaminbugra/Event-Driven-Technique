@@ -20,3 +20,5 @@ bool SoftTimer_GetTimerStatus(uint8_t TimerNo);
 void SoftTimer_ResetTimer(uint8_t TimerNo);
 
 #endif
+
+/* End of the file */

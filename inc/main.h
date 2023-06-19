@@ -35,3 +35,5 @@
 #include "softTimer.h"
 
 #endif
+
+/* End of the file */

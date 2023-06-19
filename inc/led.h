@@ -1,13 +1,13 @@
 /**
-  * @file: LED.h
-  * @author: Bünyamin Bugra Korkmazer
-  * @date: June 18, 2023
-  * @version: 1.0
+  * @file:		LED.h
+  * @author:	Bünyamin Bugra Korkmazer
+  * @date:		June 18, 2023
+  * @version:	1.0
   *
-  * @brief: Header file for LED control functions.
+  * @brief:		Header file for LED control functions.
   *
-  * @details: This file declares the types and functions used in controlling the LED. 
-  * It includes the structures for LED and Blink type, as well as the function prototypes.
+  * @details:	This file declares the types and functions used in controlling the LED. 
+  *It includes the structures for LED and Blink type, as well as the function prototypes.
   *
   * Revision History: 
   * - 1.0.0 (June 18, 2023): Initial release.
@@ -27,8 +27,8 @@ typedef struct
 } led_InitTypeDef;
 
 /**
-  * @section   Function Prototypes
-  * @brief     This section includes function prototypes.
+  * @section	Function Prototypes
+  * @brief		This section includes function prototypes.
   */
 
 /* Function prototypes for LED control */
@@ -43,3 +43,5 @@ int getPortNumber(GPIO_T* port);
 int getPinNumber(unsigned long u32PinMask);
 
 #endif
+
+/* End of the file */

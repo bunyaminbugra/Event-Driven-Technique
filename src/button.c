@@ -81,7 +81,7 @@ int button_Get_Status(button_InitTypeDef *button)
 		
 		return 0;
 	}
-	else if(SoftTimer_GetTimerStatus(TIMER_LONG_PRESS))
+	else if(SoftTimer_GetTimerStatus(TIMER_LONG_PRESS) && (!buttonState))
 	{
 		/* Handling a long press event */
 		SoftTimer_ResetTimer(TIMER_LONG_PRESS);
@@ -98,6 +98,7 @@ int button_Get_Status(button_InitTypeDef *button)
 	{
 		/* Handling a short press (debounce) event */
 		SoftTimer_ResetTimer(TIMER_DEBOUNCE);
+		SoftTimer_ResetTimer(TIMER_LONG_PRESS);
 		
 		/* Enqueues the short press event */
 		enqueue(SHORT_PRESS);
@@ -123,3 +124,5 @@ int button_Read(button_InitTypeDef *button)
 	/* Reading the state of the button from the GPIO pin */
 	return !(GPIO_PIN_DATA(getPortNumber(button->port), getPinNumber(button->pin)));
 }
+
+/* End of the file */
